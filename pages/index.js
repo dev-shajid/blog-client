@@ -3,10 +3,10 @@ import { useEffect } from 'react'
 
 export default function Home() {
 
-  // const CLIENT='https://shajib-blog.herokuapp.com'
+  const CLIENT='https://shajib-blog.herokuapp.com'
 
   const getData = async () => {
-    const res = await fetch(`${process.env.CLIENT}/api/post/get_posts`, {
+    const res = await fetch(`{CLIENT}/api/post/get_posts`, {
       method: "get",
     })
     const data = await res.json()
@@ -14,7 +14,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log(process.env.CLIENT);
     getData()
   },[])
 
