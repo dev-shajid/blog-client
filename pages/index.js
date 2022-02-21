@@ -15,6 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     getData()
+    console.log(process.env.API_URL);
   },[])
 
   return (
