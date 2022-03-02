@@ -2,6 +2,7 @@ import React from 'react'
 import style from '../styles/Nav.module.css'
 import {Search} from '@mui/icons-material';
 import Image from 'next/image';
+import HoverButton from './HoverButton/HoverButton';
 
 function Nav() {
 
@@ -29,6 +30,7 @@ function Nav() {
                 <div className={`${style.register_button}`}>
                     Create New Account
                 </div>      
+                <HoverButton/> 
             </div>
               
         </div>

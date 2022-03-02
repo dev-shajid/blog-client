@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import Demo from '../components/Demo'
 
 export default function Home() {
 
@@ -15,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     getData()
-    console.log(process.env.API_URL);
+    console.log(process.env.NEXT_PUBLIC);
   },[])
 
   return (
@@ -26,7 +27,7 @@ export default function Home() {
         <link rel="icon" href="/images/icon-72x72.png" />
       </Head>
       
-      
+      <Demo/>    
 
     </div>
   )

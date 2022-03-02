@@ -1,0 +1,35 @@
+.hover_button{
+    font-size: 1.6rem !important;
+    font-weight: 400;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    padding: 9px 16px;
+    transition: .4s;
+    cursor: pointer;
+    margin-left: 30px;
+    text-transform: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 99;
+}
+
+.hover_button::before{
+    content: "";
+    position:absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%,-50%);
+    height: 0px;
+    width: 0px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #025ce3, #4e94fd);
+    transition: height 1s, width 1s;
+    transform-origin: center;
+    z-index: -1;
+}
+
+.hover_button:hover::before{
+    height: 350px;
+    width: 350px;
+}

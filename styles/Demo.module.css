@@ -1,0 +1,52 @@
+.demo_container{
+    background-color: #121212;
+    height: 500px;
+    width: 600px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+}
+
+.demo_title{
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+.demo_des{
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    text-align: left;
+}
+
+.cursor_container{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: transparent;
+}
+
+.demo_container:hover .cursor{
+    display: block;
+}
+
+.cursor{
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    border-radius: 50%;
+    position: fixed;
+    mix-blend-mode: difference;
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+}
