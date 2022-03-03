@@ -3,6 +3,7 @@ import style from '../styles/Nav.module.css'
 import {Search} from '@mui/icons-material';
 import Image from 'next/image';
 import HoverButton from './HoverButton/HoverButton';
+import Link from 'next/link'
 
 function Nav() {
 
@@ -25,11 +26,13 @@ function Nav() {
             {/* Account */}
             <div className={style.account}>
                 <div className={`${style.login_button}`}>
-                    Login
+                    <Link href="/">Home</Link>
+                    <Link href="/about">About</Link>
+                    <Link href="/contact">Contact</Link>
                 </div>
-                <div className={`${style.register_button}`}>
+                {/* <div className={`${style.register_button}`}>
                     Create New Account
-                </div>      
+                </div>       */}
                 <HoverButton/> 
             </div>
               

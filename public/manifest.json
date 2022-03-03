@@ -1,7 +1,7 @@
 {
     "theme_color" : "#fff",
     "background_color" : "#E2EAFF",
-    "display" : "standalone",
+    "display" : "minimal-ui",
     "scope" : "/",
     "start_url" : "/",
     "description" : "This is a simple Programming Blog Website where you can share your idea or any content and problem.",
