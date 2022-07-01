@@ -3,7 +3,6 @@ import styles from '../styles/Post.module.css'
 import Link from 'next/link'
 
 const Post = ({post}) => {
-  let post_title=post?.title?.split(' ').join('-')
   return (
     <>
       {/* single post here */}
