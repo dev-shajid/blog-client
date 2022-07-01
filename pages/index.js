@@ -1,23 +1,41 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
-import Demo from '../components/Demo'
+import React, { useEffect } from 'react'
+import { useInfiniteQuery } from 'react-query'
+import LoadingPost from '../components/LoadingPost'
+import Post from '../components/Post'
+import axios from 'axios'
+
+const CLIENT='https://shajib-blog.herokuapp.com'
 
 export default function Home() {
+  const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage } =
+    useInfiniteQuery(
+      'posts',
+      async ({ pageParam = 1 }) => {
+        await new Promise((res) => setTimeout(res, 1000))
+        const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10&_page=' + pageParam)
+        return res.data
+      },
+      {
+        getNextPageParam: (_, pages) => pages.length<5?pages.length+1:undefined
+      }
+    )
 
-  const CLIENT='https://shajib-blog.herokuapp.com'
+  // Infinite Scrolling Data Fetching
+  useEffect(()=>{
+    // after scrolling to the bottom of the page, fetch the next page
+    const onScroll=(e)=>{
+      const {scrollHeight, scrollTop, clientHeight} = e.target.scrollingElement
+      if(scrollHeight - scrollTop <= clientHeight*1.3 && hasNextPage && !isFetching){
+        fetchNextPage()
+      }
+    }
 
-  const getData = async () => {
-    const res = await fetch(`${CLIENT}/api/post/get_posts`, {
-      method: "get",
-    })
-    const data = await res.json()
-    console.log(data);
-  }
+    document.addEventListener('scroll', onScroll)
+    return ()=>document.removeEventListener('scroll', onScroll)
+  },[isFetching])
 
-  useEffect(() => {
-    getData()
-    console.log(process.env.NEXT_PUBLIC);
-  },[])
+  if (isError) return <div>Error! {JSON.stringify(error)}</div>
 
   return (
     <div>
@@ -27,7 +45,30 @@ export default function Home() {
         <link rel="icon" href="/images/icon-72x72.png" />
       </Head>
       
-      <Demo/>    
+      <div  style={{width:'700px',margin:'0 auto'}}>
+
+        <h1 style={{textAlign:'center', fontSize:'3rem', fontWeight:'normal'}}>Infinite Scroll Post</h1><br/><br/>
+
+        {
+        isLoading ?
+        [1,2].map((v,i)=><LoadingPost key={i}/>)
+        :
+        data?.pages?.map((page, i) => {
+            return (
+            <div key={i}>
+                {page?.map((post, index) => (
+                <div key={index}>
+                    <Post post={post} />
+                </div>
+                ))}
+            </div>
+            )
+        })
+        }
+
+      {isFetching ? <LoadingPost/>: null}
+
+    </div>
 
     </div>
   )
