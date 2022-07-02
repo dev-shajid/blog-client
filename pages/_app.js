@@ -10,10 +10,10 @@ function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
        <Hydrate state={pageProps.dehydratedState}>
        <NextNProgress
-        color="#3b49df"
+        color="#3c55ff"
         startPosition={0.3}
         stopDelayMs={200}
-        height={2}
+        height={3}
         spinner={false}
         showOnShallow={true}
        />
