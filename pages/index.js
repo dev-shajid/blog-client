@@ -5,7 +5,7 @@ import LoadingPost from '../components/LoadingPost'
 import Post from '../components/Post'
 import axios from 'axios'
 
-const CLIENT='https://shajib-blog.herokuapp.com'
+// const CLIENT='https://shajib-blog.herokuapp.com'
 
 export default function Home() {
   const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage } =
