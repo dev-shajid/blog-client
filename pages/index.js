@@ -45,7 +45,7 @@ export default function Home() {
         <link rel="icon" href="/images/icon-72x72.png" />
       </Head>
       
-      <div  style={{width:'700px',margin:'0 auto'}}>
+      <div style={{ maxWidth: "700px", padding: "5px 10px", margin: "0 auto" }}>
 
         <h1 style={{textAlign:'center', fontSize:'3rem', fontWeight:'normal'}}>Infinite Scroll Post</h1><br/><br/>
 

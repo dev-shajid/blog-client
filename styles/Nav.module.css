@@ -1,27 +1,27 @@
-.container_fluid{
+.container_fluid {
     width: 100%;
 }
 
-.main_nav{
+.main_nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
 }
 
-.logo_search{
+.logo_search {
     display: flex;
     align-items: center;
 }
 
-.logo{
+.logo {
     font-size: 4rem;
     font-weight: 500;
     cursor: pointer;
     margin-right: 30px;
 }
 
-.search_bar{
+.search_bar {
     display: flex;
     align-items: center;
     background-color: #ffffff;
@@ -32,16 +32,16 @@
     transition: .3s;
 }
 
-.search_bar:focus-within{
+.search_bar:focus-within {
     border-color: #4028c9;
     box-shadow: 0 0 3px #4028c9b3;
 }
 
-.search_input{
+.search_input {
     flex: 1;
 }
 
-.search_bar input{
+.search_bar input {
     width: 100%;
     border: none;
     outline: none;
@@ -50,25 +50,25 @@
     font-size: 1.6rem;
 }
 
-.search_bar svg{
+.search_bar svg {
     font-size: 3rem;
     color: rgb(0, 0, 0);
     cursor: pointer;
 }
 
-.account{
+.account {
     display: flex;
     align-items: center;
     user-select: none;
 }
 
-.login_button{
+.login_button {
     font-size: 1.8rem;
     font-weight: 400;
     cursor: pointer;
 }
 
-.register_button{
+.register_button {
     display: inline-block;
     font-size: 1.6rem !important;
     font-weight: 400;
@@ -87,26 +87,44 @@
     transition: .5s;
 }
 
-.register_button::after{
+.register_button::after {
     content: '';
     position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     top: var(--y);
     left: var(--x);
     border-radius: 50%;
     height: 0px;
     width: 0px;
     transform-origin: center;
-    background: linear-gradient(#000000,#000000);
+    background: linear-gradient(#000000, #000000);
     z-index: -11;
     transition: height 1s, width .8s;
 }
 
-.register_button:hover::after{
+.register_button:hover::after {
     height: 350px;
     width: 350px;
 }
 
-.register_button:hover{
+.register_button:hover {
     color: white;
+}
+
+@media screen and (max-width: 576px) {
+    .main_nav {
+        width: 95%;
+    }
+
+    .login_button {
+        margin-right: 10px;
+    }
+
+    .search_bar {
+        display: none;
+    }
+
+    .register_button {
+        display: none;
+    }
 }
