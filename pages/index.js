@@ -66,7 +66,7 @@ export default function Home() {
         })
         }
 
-      {isFetching ? <LoadingPost/>: null}
+      {isFetching && hasNextPage ? <LoadingPost/>: null}
 
     </div>
 
