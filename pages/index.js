@@ -17,7 +17,7 @@ export default function Home() {
         return res.data
       },
       {
-        getNextPageParam: (_, pages) => pages.length<5?pages.length+1:undefined
+        getNextPageParam: (_, pages) => pages.length<10?pages.length+1:undefined
       }
     )
 
