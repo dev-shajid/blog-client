@@ -1,21 +1,23 @@
 import Head from 'next/head'
 import React, { useEffect } from 'react'
-import { useInfiniteQuery } from 'react-query'
+import { useInfiniteQuery, QueryClient, dehydrate } from 'react-query'
 import LoadingPost from '../components/LoadingPost'
 import Post from '../components/Post'
 import axios from 'axios'
 
 // const CLIENT='https://shajib-blog.herokuapp.com'
 
+const fetchPosts = async ({ pageParam = 1 }) => {
+  await new Promise((res) => setTimeout(res, 1000))
+  const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10&_page=' + pageParam)
+  return res.data
+}
+
 export default function Home() {
   const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage } =
     useInfiniteQuery(
       'posts',
-      async ({ pageParam = 1 }) => {
-        await new Promise((res) => setTimeout(res, 1000))
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10&_page=' + pageParam)
-        return res.data
-      },
+      fetchPosts,
       {
         getNextPageParam: (_, pages) => pages.length<10?pages.length+1:undefined
       }
@@ -73,3 +75,14 @@ export default function Home() {
     </div>
   )
 }
+
+// export async function getStaticProps() {
+//   const queryClient = new QueryClient();
+//   await queryClient.prefetchQuery("posts", fetchPosts);
+
+//   return {
+//     props: {
+//       dehydratedState: dehydrate(queryClient),
+//     },
+//   };
+// }
