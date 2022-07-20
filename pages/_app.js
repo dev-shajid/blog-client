@@ -5,10 +5,10 @@ import '../styles/globals.css'
 import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }) {
-  const [queryClient] = useState(() => new QueryClient())
+  const queryClient = new QueryClient()
   return <>
     <QueryClientProvider client={queryClient}>
-       <Hydrate state={pageProps.dehydratedState}>
+       {/* <Hydrate state={pageProps.dehydratedState}> */}
        <NextNProgress
         color="#3c55ff"
         startPosition={0.3}
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
        />
         <Nav/>
         <Component {...pageProps} />
-       </Hydrate>
+       {/* </Hydrate> */}
      </QueryClientProvider>
   </>
 }
