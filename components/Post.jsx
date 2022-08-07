@@ -21,7 +21,7 @@ const Post = ({post}) => {
             </div>
           </div>
           <div className={styles.post_title}>
-            <Link href={`/post/${post.id}`}>{post.title}</Link>
+            <Link href={`/post/${post.id}`} passHref>{post.title}</Link>
           </div>
           <div className={styles.post_tags}>
             {

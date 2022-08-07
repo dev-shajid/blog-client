@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Nav from '../components/Nav'
 import '../styles/globals.css'
 import NextNProgress from "nextjs-progressbar";

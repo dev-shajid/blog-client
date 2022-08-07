@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, { useEffect } from 'react'
-import { useInfiniteQuery, QueryClient, dehydrate } from 'react-query'
+import { useInfiniteQuery, QueryClient, dehydrate } from '@tanstack/react-query'
 import LoadingPost from '../components/LoadingPost'
 import Post from '../components/Post'
 import axios from 'axios'
@@ -16,7 +16,7 @@ const fetchPosts = async ({ pageParam = 1 }) => {
 export default function Home() {
   const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage } =
     useInfiniteQuery(
-      'posts',
+      ['posts'],
       fetchPosts,
       {
         getNextPageParam: (_, pages) => pages.length<10?pages.length+1:undefined
@@ -75,14 +75,3 @@ export default function Home() {
     </div>
   )
 }
-
-// export async function getStaticProps() {
-//   const queryClient = new QueryClient();
-//   await queryClient.prefetchQuery("posts", fetchPosts);
-
-//   return {
-//     props: {
-//       dehydratedState: dehydrate(queryClient),
-//     },
-//   };
-// }

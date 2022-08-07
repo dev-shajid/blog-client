@@ -17,7 +17,9 @@ function Nav() {
                 <div className={style.logo_search}>
                     {/* LOGO */}
                     <div className={style.logo}>
-                        <Link href='/'><Image src="/images/Logo.png" width="200" height="40" alt="Logo" /></Link>
+                        <Link href={'/'} passHref>
+                            <div><Image src="/images/Logo.png" width="200" height="40" alt="Logo" /></div>
+                        </Link>
                     </div>
 
                     {/* Search Bar */}
@@ -30,7 +32,7 @@ function Nav() {
                 {/* Account */}
                 <div className={style.account}>
                     <div className={`${style.login_button}`}>
-                        <Link href='/login'>Login</Link>
+                        <Link href='/login' passHref>Login</Link>
                     </div>
                     <div onMouseMove={hoverHandle} className={`${style.register_button}`} >
                         Create New Account
