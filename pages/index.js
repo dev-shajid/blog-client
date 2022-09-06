@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useInfiniteQuery, QueryClient, dehydrate } from '@tanstack/react-query'
 import LoadingPost from '../components/LoadingPost'
 import Post from '../components/Post'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 // const CLIENT='https://shajib-blog.herokuapp.com'
 
@@ -14,12 +15,15 @@ const fetchPosts = async ({ pageParam = 1 }) => {
 }
 
 export default function Home() {
+  const ref = useRef()
+
   const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage } =
     useInfiniteQuery(
       ['posts'],
       fetchPosts,
       {
-        getNextPageParam: (_, pages) => pages.length<10?pages.length+1:undefined
+        getNextPageParam: (_, pages) => pages.length<10?pages.length+1:undefined,
+        // enabled:false,
       }
     )
 
@@ -28,7 +32,8 @@ export default function Home() {
     // after scrolling to the bottom of the page, fetch the next page
     const onScroll=(e)=>{
       const {scrollHeight, scrollTop, clientHeight} = e.target.scrollingElement
-      if(scrollHeight - scrollTop <= clientHeight*1.3 && hasNextPage && !isFetching){
+      if(scrollHeight - scrollTop <= clientHeight*1.2 && ref.current && hasNextPage && !isFetching){
+        console.log(ref.current)
         fetchNextPage()
       }
     }
@@ -47,7 +52,7 @@ export default function Home() {
         <link rel="icon" href="/images/icon-72x72.png" />
       </Head>
       
-      <div style={{ maxWidth: "700px", padding: "5px 10px", margin: "0 auto" }}>
+      <div ref={ref} style={{ maxWidth: "700px", padding: "5px 10px", margin: "0 auto" }}>
 
         <h1 style={{textAlign:'center', fontSize:'3rem', fontWeight:'normal'}}>Infinite Scroll Post</h1><br/><br/>
 
