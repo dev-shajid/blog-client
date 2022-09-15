@@ -11,7 +11,7 @@ import Transitions from './Transitions'
 const fetchPosts = async ({ pageParam = 1 }) => {
     await new Promise((res) => setTimeout(res, 1000))
     // const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10&_page=' + pageParam)
-    const res = await axios.get('/api/post/get?_limit=2&_page=' + pageParam)
+    const res = await axios.get('/api/post/get?_limit=10&_page=' + pageParam)
     return res.data
 }
 
@@ -33,10 +33,15 @@ const Posts = () => {
             ['posts;'],
             fetchPosts,
             {
-                getNextPageParam: (_, pages) => pages.length < Math.ceil(number.number / 2) ? pages.length + 1 : undefined,
+                getNextPageParam: (_, pages) => pages.length < Math.ceil(number.number / 10) ? pages.length + 1 : undefined,
                 enabled: true,
             }
         )
+
+            console.log({isFetching, update:state.update});
+    useEffect(()=>{
+        refetch()
+    },[])
 
     useEffect(() => {
         if (router.route !== '/') {

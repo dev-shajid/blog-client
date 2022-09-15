@@ -11,7 +11,7 @@ import ContextProvider from '../store';
 function MyApp({ Component, pageProps, router }) {
   const [queryClient] = useState(() => new QueryClient())
   return <>
-    <SessionProvider session={pageProps.session} refetchInterval={0}>
+    <SessionProvider session={pageProps.session} refetchInterval={1000}>
       <ContextProvider>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>

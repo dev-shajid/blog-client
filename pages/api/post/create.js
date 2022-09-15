@@ -78,7 +78,7 @@ const handler = nc({
 
                     if (req.file) {
                         if (req.file.size > 1024 * 1024 * 2) {
-                            res.status(400).json({ error: 'File size should less then 2 MB', size: req.file.size / (1024 * 1024) })
+                            res.status(400).json({ error: 'File size should be less then 2 MB', size: req.file.size / (1024 * 1024) })
                         } else {
                             console.log(req.file)
                             // Upload image to cloudinary

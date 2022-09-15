@@ -93,6 +93,11 @@ section {
   font-family: 'Comic Neue' !important;
 }
 
+.ql-snow .ql-editor .ql-code-block-container {
+  padding: 15px;
+  font-size: 1rem;
+}
+
 @media (max-width:768px) {
   .ql-container {
     font-size: 16px;
@@ -105,7 +110,7 @@ section {
 }
 
 pre.ql-syntax {
-  font-size: 15px;
+  /* font-size: 14px; */
 }
 
 .post_cover_image {
