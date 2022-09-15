@@ -91,7 +91,7 @@ const Login = () => {
                                 type='submit'
                                 value='Submit'
                             />
-                            <p>Don't have an account? <Link href='/signup'>Signup</Link></p>
+                            <p>Dont have an account? <Link href="/signup">Signup</Link></p>
                         </form>
                     </div>
                 </section>
