@@ -43,7 +43,7 @@ const PostEditor = ({ setActive }) => {
                     }
                     toast.dismiss(toastId)
                     setActive(false)
-                }, 1000)
+                }, 10)
             })
 
         } else {

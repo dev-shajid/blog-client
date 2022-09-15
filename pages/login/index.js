@@ -56,7 +56,7 @@ const Login = () => {
                         toast.error(res.error)
                     }
                     setActive(false)
-                }, 1000)
+                }, 10)
             })
         }
     }
