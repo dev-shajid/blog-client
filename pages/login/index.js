@@ -56,22 +56,18 @@ const Login = () => {
                         toast.error(res.error)
                     }
                     setActive(false)
-                }, 100)
+                }, 10)
             })
         }
     }
 
-    if(status == 'loading'){
-        return <></>
-    }
-
-    if (status === 'authenticated' && session?.user?.name) {
-        router.push('/')
-    }
+    // if (status === 'authenticated' && session?.user?.name) {
+    //     router.push('/')
+    // }
 
     return (
         <>
-            <LoadingOverlay overlay={active} otpBox={false} />
+            <LoadingOverlay overlay={active} />
             <Transitions>
                 <section className={style.login}>
                     <div className={style.container}>

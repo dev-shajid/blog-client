@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps, router }) {
             />
             <Nav />
             <AnimatePresence exitBeforeEnter >
-              <Component {...pageProps} key={router.pathname} />
+              <Component {...pageProps} />
             </AnimatePresence>
           </Hydrate>
         </QueryClientProvider>
