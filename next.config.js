@@ -3,7 +3,7 @@ const withPWA = require("next-pwa");
 module.exports = withPWA({
   reactStrictMode: true,
   images: {
-    domains: ['shajib-blog.vercel.app', 'localhost']
+    domains: ['shajib-blog.vercel.app', 'res.cloudinary.com', 'localhost']
   },
   pwa: {
     dest: "public",

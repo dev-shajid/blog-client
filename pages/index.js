@@ -8,6 +8,7 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import LoadingPost from '../components/LoadingPost'
 import Post from '../components/Post'
 import axios from 'axios'
+import { usePostContext } from '../store'
 
 // export const getServerSideProps = async (context) => {
 //   const session = await getSession(context)
@@ -41,23 +42,32 @@ export default function Home() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const ref = useRef()
+  const {state, dispatch} = usePostContext()
 
   const { data: number } = useQuery(['number'], fetchPostsNumber)
 
-  const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage } =
+  const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage, refetch } =
     useInfiniteQuery(
       ['posts;'],
       fetchPosts,
       {
         getNextPageParam: (_, pages) => pages.length < Math.ceil(number.number / 2) ? pages.length + 1 : undefined,
+        enabled:true,
       }
     )
+
+    useEffect(()=>{
+      if(router.route !== '/'){
+        dispatch({type:'UPDATE_FALSE'})
+      }
+    },[router.route])
 
   // Infinite Scrolling Data Fetching
   useEffect(() => {
     // after scrolling to the bottom of the page, fetch the next page
     const onScroll = (e) => {
       const { scrollHeight, scrollTop, clientHeight } = e.target.scrollingElement
+      dispatch({type:'UPDATE_FALSE'})
       if (scrollHeight - scrollTop <= clientHeight * 1.2 && ref.current && hasNextPage && !isFetching) {
         fetchNextPage()
       }
@@ -78,9 +88,8 @@ export default function Home() {
       <Transitions>
         <section>
           <div ref={ref} style={{ maxWidth: "700px", padding: "5px 10px", margin: "0 auto" }}>
-
             {
-              isLoading ?
+              isLoading || (isFetching && state.update) ?
                 [1, 2].map((v, i) => <LoadingPost key={i} />)
                 :
                 data?.pages?.map((page, i) => {

@@ -4,14 +4,14 @@ import Editor from './Editor';
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { usePostContext } from '../store';
 
 const PostEditor = ({ setActive }) => {
     const [description, setDescription] = useState('')
     const [image, setImage] = useState()
     const [title, setTitle] = useState()
     const [imagePreview, setImagePreview] = useState('');
-
+    const {state, dispatch} = usePostContext()
     const router = useRouter()
 
     function handleTitleChange(e) {
@@ -28,14 +28,14 @@ const PostEditor = ({ setActive }) => {
             form.append('image', image)
             form.append('description', description)
 
-            new Promise(async (resolve) => {
+            // new Promise(async (resolve) => {
                 const toastId = toast.loading('Loading...')
                 setActive(true)
-                setTimeout(async () => {
-                    resolve()
+                // setTimeout(async () => {
+                //     resolve()
                     const res = await axios.post('/api/post/create', form)
-                    console.log({ res });
                     if (res.status == 200) {
+                        dispatch({type:'UPDATE_TRUE'})
                         toast.dismiss(toastId)
                         setActive(false)
                         toast.success('Successfully Created New Post')
@@ -45,8 +45,8 @@ const PostEditor = ({ setActive }) => {
                         setActive(false)
                         toast.error("Something went wrong")
                     }
-                }, 10)
-            })
+            //     }, 10)
+            // })
 
         } else {
             if (!title) {

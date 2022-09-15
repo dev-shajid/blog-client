@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Transitions from '../../components/Transitions'
 import { getSession } from 'next-auth/react'
 import PostEditor from '../../components/PostEditor'
@@ -23,6 +23,7 @@ export const getServerSideProps = async (context) => {
 
 const Post = () => {
   const [active, setActive] = useState(false)
+
   return (
     <>
       <LoadingOverlay overlay={active} />
