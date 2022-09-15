@@ -35,14 +35,16 @@ const PostEditor = ({ setActive }) => {
                     resolve()
                     const res = await axios.post('/api/post/create', form)
                     console.log({ res });
-                    if (res?.status == 200) {
+                    if (res.status == 200) {
+                        toast.dismiss(toastId)
+                        setActive(false)
                         toast.success('Successfully Created New Post')
                         router.push('/')
                     } else {
+                        toast.dismiss(toastId)
+                        setActive(false)
                         toast.error("Something went wrong")
                     }
-                    toast.dismiss(toastId)
-                    setActive(false)
                 }, 10)
             })
 

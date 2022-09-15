@@ -25,7 +25,8 @@ const upload = multer({
 const handler = nc({
     onError: (err, req, res, next) => {
         // console.error(err.message);
-        res.status(500).json({ error: "Something broke!" });
+        // res.status(500).json({ error: "Something broke!" });
+        next()
     },
     onNoMatch: (req, res) => {
         res.status(404).json("Page is not found");
