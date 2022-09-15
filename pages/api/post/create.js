@@ -40,7 +40,7 @@ const handler = nc({
                 const { title, description } = req.body
                 if (title && description) {
                     const userId = session.user._id
-                    const imageUrl = req.file ? `http://localhost:3000/upload/${req.file.filename}` : ''
+                    const imageUrl = req.file ? `${process.env.CLIENT_URL}/upload/${req.file.filename}` : ''
                     const post = await Post.create({ title, description, image: imageUrl, user: userId })
 
                     if (post) {

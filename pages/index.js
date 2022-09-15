@@ -28,7 +28,7 @@ import axios from 'axios'
 const fetchPosts = async ({ pageParam = 1 }) => {
   await new Promise((res) => setTimeout(res, 1000))
   // const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10&_page=' + pageParam)
-  const res = await axios.get('http://localhost:3000/api/post/get?_limit=2&_page=' + pageParam)
+  const res = await axios.get('/api/post/get?_limit=2&_page=' + pageParam)
   return res.data
 }
 
