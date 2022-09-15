@@ -48,7 +48,7 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
       {
         overlay ?
           <div className={`${style.loading_overlay} ${!overlay && style.loading_overlay_hidden}`} >
-            {otpBox && <div className={`${style.otpBox} ${!otpBox && style.otpBox_hidden}`}>
+            {otpBox && overlay? <div className={`${style.otpBox} ${!otpBox && style.otpBox_hidden}`}>
               <div className={style.otp_message}>
                 You have got an OTP in your email
               </div>
@@ -74,7 +74,7 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
                   If you dont see any mail, please check the spam folder
                 </div>
               </form>
-            </div>}
+            </div> : <></>}
           </div> : <></>
       }
     </>
