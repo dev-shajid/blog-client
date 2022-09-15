@@ -44,35 +44,40 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
   }, [])
 
   return (
-    <div className={`${style.loading_overlay} ${!overlay && style.loading_overlay_hidden}`} >
-      <div className={`${style.otpBox} ${!otpBox && style.otpBox_hidden}`}>
-        <div className={style.otp_message}>
-          You have got an OTP in your email
-        </div>
-        <form onSubmit={handleOtpSubmit}>
-          <PinInput
-            onChange={setOTP}
-            onComplete={() => console.log(OTP)}
-            autoFocus
-          // values={[OTP]}
-          />
-          <div className={style.otp_action}>
-            <button type='submit' className={style.submit_button}>Submit</button>
-            <div
-              onClick={() => {
-                setActive(false)
-                setOTP('')
-              }}
-              className={style.submit_button}>
-              Cancel
+    <>
+      {
+        overlay ?
+          <div className={`${style.loading_overlay} ${!overlay && style.loading_overlay_hidden}`} >
+            <div className={`${style.otpBox} ${!otpBox && style.otpBox_hidden}`}>
+              <div className={style.otp_message}>
+                You have got an OTP in your email
+              </div>
+              <form onSubmit={handleOtpSubmit}>
+                <PinInput
+                  onChange={setOTP}
+                  onComplete={() => console.log(OTP)}
+                  autoFocus
+                // values={[OTP]}
+                />
+                <div className={style.otp_action}>
+                  <button type='submit' className={style.submit_button}>Submit</button>
+                  <div
+                    onClick={() => {
+                      setActive(false)
+                      setOTP('')
+                    }}
+                    className={style.submit_button}>
+                    Cancel
+                  </div>
+                </div>
+                <div className={style.otp_spam_message}>
+                  If you dont see any mail, please check the spam folder
+                </div>
+              </form>
             </div>
-          </div>
-          <div className={style.otp_spam_message}>
-            If you dont see any mail, please check the spam folder
-          </div>
-        </form>
-      </div>
-    </div>
+          </div> : <></>
+      }
+    </>
   )
 }
 

@@ -56,7 +56,7 @@ const Login = () => {
                         toast.error(res.error)
                     }
                     setActive(false)
-                }, 10)
+                }, 100)
             })
         }
     }
@@ -67,7 +67,7 @@ const Login = () => {
 
     return (
         <>
-            <LoadingOverlay overlay={active} />
+            <LoadingOverlay overlay={active} otpBox={false} />
             <Transitions>
                 <section className={style.login}>
                     <div className={style.container}>
