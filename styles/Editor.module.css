@@ -1,0 +1,11 @@
+.editor_container {
+    width: 100%;
+    /* min-height: 500px; */
+    margin: 1rem 0;
+    font-family: 'Comic Neue';
+}
+
+.editor_container iframe {
+    width: 80%;
+    aspect-ratio: 16/9;
+}

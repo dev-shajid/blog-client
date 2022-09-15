@@ -8,8 +8,7 @@
 
 .post_header{
     width: 100%;
-    aspect-ratio: 6/3;
-    max-height: 400px;
+    height: 250px;
 }
 
 .post_body{
@@ -102,3 +101,4 @@
     height: 100%;
     width: 300%;
 }
+ 

@@ -1,0 +1,90 @@
+.page_title{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.create_post_container{
+    /* background-color: lightblue; */
+    max-width: 800px;
+    margin-top: 3rem;
+    /* padding: 1rem; */
+}
+
+.create_post_image{
+    margin-bottom: 2rem;
+}
+
+.create_post_image label{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.create_post_title {
+    margin-bottom: 2rem;
+}
+
+.create_post_title textarea{
+    border: none;
+    outline: none;
+    font-size: 48px;
+    font-weight: 700;
+    background-color: transparent;
+    color: black;
+    min-height: 50px;
+    max-height: 500px;
+    width: 100%;
+    resize: none;
+    letter-spacing: 1px;
+}
+
+.create_post_title textarea::placeholder{
+    color: gray;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.buttons{
+    display: flex;
+}
+
+.buttons .button{
+    background: rgb(107, 33, 255);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 8px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttons .cancel_button{
+    margin-left: 1rem;
+    background: none !important;
+    border: 1px solid;
+    color: black;
+}
+
+@media (max-width:768px) {
+    .create_post_title textarea,
+    .create_post_title textarea::placeholder{
+        font-size: 40px;
+    }
+}
+
+@media (max-width:480px) {
+    .create_post_title textarea,
+    .create_post_title textarea::placeholder{
+        font-size: 32px;
+    }
+
+    .create_post_image label{
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
