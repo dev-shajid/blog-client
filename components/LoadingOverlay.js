@@ -68,7 +68,7 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
             </div>
           </div>
           <div className={style.otp_spam_message}>
-            If you don't see any mail, please check the spam folder
+            If you dont see any mail, please check the spam folder
           </div>
         </form>
       </div>
