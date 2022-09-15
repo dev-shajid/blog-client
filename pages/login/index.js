@@ -23,7 +23,7 @@ export const getServerSideProps = async (context) => {
     }
 }
 
-const index = () => {
+const Login = () => {
     const router = useRouter()
     const [value, setValue] = useState({ email: '', password: '' })
     const [active, setActive] = useState(false)
@@ -101,4 +101,4 @@ const index = () => {
 
 }
 
-export default index
+export default Login

@@ -65,7 +65,7 @@ export default function Home() {
 
     document.addEventListener('scroll', onScroll)
     return () => document.removeEventListener('scroll', onScroll)
-  }, [isFetching])
+  }, [isFetching, hasNextPage])
 
   if (isError) return <div>Error! {JSON.stringify(error)}</div>
 
