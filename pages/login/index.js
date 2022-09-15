@@ -61,9 +61,13 @@ const Login = () => {
         }
     }
 
-    // if (status === 'authenticated' && session?.user?.name) {
-    //     router.push('/')
-    // }
+    if(status == 'loading'){
+        return <></>
+    }
+
+    if (status === 'authenticated' && session?.user?.name) {
+        router.push('/')
+    }
 
     return (
         <>

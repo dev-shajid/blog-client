@@ -83,7 +83,7 @@ export default function Home() {
     router.push('/login')
   }
 
-  if (status == 'authenticated' && session?.user?.name) {
+  if (status == 'authenticated') {
     return (
       <Transitions>
         <section>
