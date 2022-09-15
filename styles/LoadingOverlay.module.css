@@ -16,7 +16,7 @@
     opacity: 0 !important;
     visibility: hidden !important;
     z-index: -1;
-    transition-delay: .8s;
+    /* transition-delay: .4s; */
 }
 
 .loading_overlay .otpBox{
@@ -74,10 +74,31 @@
     background-color: rgba(73, 37, 255, 0) !important;
     border: 1px solid gray;
     color: black;
+    text-align: center;
+    cursor: pointer;
 }
 
 .loading_overlay input[type="tel"] {
     width: 42px !important;
     height: 60px !important;
     font-size: 1.5rem;
+}
+
+.otp_message{
+    font-size: 1.2rem;
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.otp_spam_message{
+    border: 2px solid #ffbcbc;
+    margin-top: 1rem;
+    padding: 10px;
+    border-radius: 4px;
+    color: #e95c5c;
+    background: #ff00000d;
+    text-align: center;
 }

@@ -128,6 +128,11 @@ pre.ql-syntax {
   font-style: inherit !important;
 }
 
+.style_react-code-input__1Z-nz{
+  display: flex;
+  justify-content: center;
+}
+
 /* Sekelton Loader */
 .skeleton_box {
   background-image: linear-gradient(90deg,

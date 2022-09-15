@@ -38,7 +38,7 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
   useEffect(() => {
     if (overlay) {
       document.documentElement.style.overflowY = 'hidden'
-    }else{
+    } else {
       document.documentElement.style.overflowY = 'auto'
     }
   }, [])
@@ -46,6 +46,9 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
   return (
     <div className={`${style.loading_overlay} ${!overlay && style.loading_overlay_hidden}`} >
       <div className={`${style.otpBox} ${!otpBox && style.otpBox_hidden}`}>
+        <div className={style.otp_message}>
+          You have got an OTP in your email
+        </div>
         <form onSubmit={handleOtpSubmit}>
           <PinInput
             onChange={setOTP}
@@ -55,14 +58,17 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
           />
           <div className={style.otp_action}>
             <button type='submit' className={style.submit_button}>Submit</button>
-            <button
+            <div
               onClick={() => {
                 setActive(false)
                 setOTP('')
               }}
               className={style.submit_button}>
               Cancel
-            </button>
+            </div>
+          </div>
+          <div className={style.otp_spam_message}>
+            If you don't see any mail, please check the spam folder
           </div>
         </form>
       </div>

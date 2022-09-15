@@ -1,20 +1,26 @@
-.page_title{
+.page_title {
     font-size: 48px;
     font-weight: bold;
 }
 
-.create_post_container{
+.create_post_container {
     /* background-color: lightblue; */
     max-width: 800px;
     margin-top: 3rem;
     /* padding: 1rem; */
 }
 
-.create_post_image{
+.create_post_image {
     margin-bottom: 2rem;
 }
 
-.create_post_image label{
+.create_post_image .image_open_container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.create_post_image .image_open_button {
     background-color: black;
     color: white;
     border-radius: 5px;
@@ -22,13 +28,22 @@
     font-size: 1rem;
     cursor: pointer;
     margin-right: 1rem;
+    display: inline-block;
+}
+
+.create_post_image span {
+    border: 1px solid rgb(106, 106, 106);
+    background-color: rgba(164, 164, 164, 0.151);
+    color: rgb(83, 83, 83);
+    padding: 3px 10px;
+    border-radius: 3px;
 }
 
 .create_post_title {
     margin-bottom: 2rem;
 }
 
-.create_post_title textarea{
+.create_post_title textarea {
     border: none;
     outline: none;
     font-size: 48px;
@@ -42,17 +57,17 @@
     letter-spacing: 1px;
 }
 
-.create_post_title textarea::placeholder{
+.create_post_title textarea::placeholder {
     color: gray;
     font-size: 48px;
     font-weight: 700;
 }
 
-.buttons{
+.buttons {
     display: flex;
 }
 
-.buttons .button{
+.buttons .button {
     background: rgb(107, 33, 255);
     color: white;
     border: none;
@@ -63,7 +78,7 @@
     cursor: pointer;
 }
 
-.buttons .cancel_button{
+.buttons .cancel_button {
     margin-left: 1rem;
     background: none !important;
     border: 1px solid;
@@ -71,19 +86,31 @@
 }
 
 @media (max-width:768px) {
+
     .create_post_title textarea,
-    .create_post_title textarea::placeholder{
+    .create_post_title textarea::placeholder {
         font-size: 40px;
     }
 }
 
 @media (max-width:480px) {
+
     .create_post_title textarea,
-    .create_post_title textarea::placeholder{
+    .create_post_title textarea::placeholder {
         font-size: 32px;
     }
 
-    .create_post_image label{
+    .create_post_image .image_open_container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .create_post_image span{
+        margin-top: 10px;
+    }
+
+    .create_post_image label {
         padding: 10px 14px;
         font-size: 14px;
     }

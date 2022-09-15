@@ -16,13 +16,13 @@ const Transitions = ({ children }) => {
             // initial="initial"
             // animate="animate"
             // exit="exit"
-            initial={{opacity: 0, x: isMobile?'30vw':'0'}}
-            animate = {{ opacity: 1, x: '0' }}
-            exit = {{ opacity: 0, x: '0vw' }}
-            transition = {{ duration: .3 }}
-            >
-    { children }
-            </motion.div >
+            initial={{ opacity: 0, x: isMobile ? '30vw' : '0' }}
+            animate={{ opacity: 1, x: '0' }}
+            exit={{ opacity: 0, x: '0vw' }}
+            transition={{ duration: .4 }}
+        >
+            {children}
+        </motion.div >
     );
 };
 export default Transitions;

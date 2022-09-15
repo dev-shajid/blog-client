@@ -23,23 +23,16 @@ export const config = {
 // });
 
 const upload = multer({
-    // storage: multer.diskStorage({
-    //     destination: function (req, file, cb) {
-    //         cb(null, path.join(process.cwd(), 'public', 'upload'))
-    //     },
-    //     filename: function (req, file, cb) {
-    //         cb(null, new Date().getTime() + '-' + file.originalname)
-    //     }
-    // })
     storage: multer.diskStorage({}),
     fileFilter: (req, file, cb) => {
-      let ext = path.extname(file.originalname);  
-      if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png" && ext !== 'webp') {
-        cb(new Error("File type is not supported"), false);
-        return;
-      }
-      cb(null, true);
-    },
+        let ext = path.extname(file.originalname);
+        if (ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == '.webp') {
+            cb(null, true);
+        } else {
+            cb(new Error("File type is not supported"), false);
+            return new Error("File type is not supported")
+        }
+    }
 })
 
 const handler = nc({
@@ -55,49 +48,66 @@ const handler = nc({
     .use(upload.single('image'))
     // .post(async (req, res) => {
     //     try {
-    //         if(req.file){
+    //         // console.log(req);
+    //         if (req.file) {
+    //             if (req.file.size > 1024 * 1024 * 2) {
+    //                 res.status(400).json({ error: 'File size should less then 2 MB', size: req.file.size / (1024 * 1024) })
+    //             }
     //             // Upload image to cloudinary
-    //         const result = await cloudinary.uploader.upload(req.file.path,{
-    //             folder: 'dev-blog'
-    //         });
+    //             const result = await cloudinary.uploader.upload(req.file.path, {
+    //                 folder: 'dev-blog'
+    //             });
 
-    //         res.json(result);
-    //         }else{
-    //             res.json({error:"Didn't get any file"})
+    //             res.json(result);
+    //         } else {
+    //             res.json({ error: "Select .png/.jpg/.webp image" })
     //         }
     //     } catch (err) {
     //         console.log(err);
+    //         res.json({ error: err.message })
     //     }
     // })
-.post(async (req, res) => {
-    await dbConnect()
-    try {
-        const session = await getSession({ req })
-        if (session) {
-            const { title, description } = req.body
-            if (title && description) {
-                const userId = session.user._id
-                const result = await cloudinary.uploader.upload(req.file.path,{
-                    folder: 'dev-blog'
-                });
-                const imageUrl = result.url ? result.url : ''
-                const post = await Post.create({ title, description, image: imageUrl, user: userId })
+    .post(async (req, res) => {
+        await dbConnect()
+        try {
+            const session = await getSession({ req })
+            if (session) {
+                const { title, description } = req.body
+                if (title && description) {
+                    const userId = session.user._id
 
-                if (post) {
-                    res.status(200).json({ message: post })
+                    if (req.file) {
+                        if (req.file.size > 1024 * 1024 * 2) {
+                            res.status(400).json({ error: 'File size should less then 2 MB', size: req.file.size / (1024 * 1024) })
+                        } else {
+                            console.log(req.file)
+                            // Upload image to cloudinary
+                            const result = await cloudinary.uploader.upload(req.file.path, {
+                                folder: 'dev-blog'
+                            });
+
+                            const imageUrl = result.url ? result.url : ''
+                            const post = await Post.create({ title, description, image: imageUrl, user: userId })
+
+                            if (post) {
+                                res.status(200).json({ message: post })
+                            } else {
+                                res.status(400).json({ error: 'Something is wrong' })
+                            }
+                        }
+                    } else {
+                        res.status(400).json({ error: "Select .png/.jpg/.webp image" })
+                    }
                 } else {
-                    res.status(400).json({ error: 'Something is wrong' })
+                    res.status(400).json({ error: "Title and Description are required" })
                 }
             } else {
-                res.status(400).json({ error: "Title and Description are required" })
+                res.status(400).json({ error: 'Access Denied' })
             }
-        } else {
-            res.status(400).json({ error: 'Access Denied' })
+            // res.json({ body: req.body, file: req.file })
+        } catch (err) {
+            res.status(520).json({ error: err.message })
         }
-        // res.json({ body: req.body, file: req.file })
-    } catch (err) {
-        res.status(520).json({ error: err.message })
-    }
-})
+    })
 
 export default handler

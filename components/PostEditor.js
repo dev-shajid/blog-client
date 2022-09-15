@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import style from '../styles/CreatePost.module.css'
 import Editor from './Editor';
 import axios from 'axios'
@@ -11,8 +11,9 @@ const PostEditor = ({ setActive }) => {
     const [image, setImage] = useState()
     const [title, setTitle] = useState()
     const [imagePreview, setImagePreview] = useState('');
-    const {state, dispatch} = usePostContext()
+    const { state, dispatch } = usePostContext()
     const router = useRouter()
+    const imageRef = useRef()
 
     function handleTitleChange(e) {
         e.target.style.height = "5px !important";
@@ -25,28 +26,29 @@ const PostEditor = ({ setActive }) => {
         if (title && description && image) {
             let form = new FormData()
             form.append('title', title)
-            form.append('image', image)
             form.append('description', description)
+            form.append('image', image)
 
-            // new Promise(async (resolve) => {
-                const toastId = toast.loading('Loading...')
-                setActive(true)
-                // setTimeout(async () => {
-                //     resolve()
-                    const res = await axios.post('/api/post/create', form)
-                    if (res.status == 200) {
-                        dispatch({type:'UPDATE_TRUE'})
-                        toast.dismiss(toastId)
-                        setActive(false)
-                        toast.success('Successfully Created New Post')
-                        router.push('/')
-                    } else {
-                        toast.dismiss(toastId)
-                        setActive(false)
-                        toast.error("Something went wrong")
-                    }
-            //     }, 10)
-            // })
+            const toastId = toast.loading('Loading...')
+            setActive(true)
+            try {
+                const res = await axios.post('/api/post/create', form)
+                if (res.status == 200) {
+                    dispatch({ type: 'UPDATE_TRUE' })
+                    toast.dismiss(toastId)
+                    setActive(false)
+                    toast.success('Successfully Created New Post')
+                    router.push('/')
+                } else {
+                    toast.dismiss(toastId)
+                    setActive(false)
+                    toast.error("Something wents wrong")
+                }
+            } catch (err) {
+                toast.dismiss(toastId)
+                setActive(false)
+                toast.error(err.response.data.error)
+            }
 
         } else {
             if (!title) {
@@ -86,13 +88,16 @@ const PostEditor = ({ setActive }) => {
 
                 {/* Add Image */}
                 <div className={style.create_post_image}>
-                    <label htmlFor='image_box'>Add a Cover Image</label>
-                    <span>Image Aspect-Ratio should be 5:3</span>
+                    <div className={style.image_open_container}>
+                        <div onClick={() => imageRef.current.click()} className={style.image_open_button}>Add a Cover Image</div>
+                        <span>Image Aspect-Ratio should be 5:3</span>
+                    </div>
                     <input
                         type='file'
                         id='image_box'
                         style={{ display: 'none' }}
                         onChange={handleImage}
+                        ref={imageRef}
                     />
                     {imagePreview && <div className='post_cover_image'><img src={imagePreview} /></div>}
                 </div>
@@ -110,7 +115,7 @@ const PostEditor = ({ setActive }) => {
                     >
                         Submit
                     </div>
-                    <div onClick={()=>router.push('/')} className={`${style.cancel_button} ${style.button}`}>Cancel</div>
+                    <div onClick={() => router.push('/')} className={`${style.cancel_button} ${style.button}`}>Cancel</div>
                 </div>
 
             </div>

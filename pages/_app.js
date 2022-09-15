@@ -8,7 +8,7 @@ import NextNProgress from "nextjs-progressbar";
 import Nav from '../components/Nav'
 import ContextProvider from '../store';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   const [queryClient] = useState(() => new QueryClient())
   return <>
     <SessionProvider session={pageProps.session} refetchInterval={0}>
@@ -29,8 +29,8 @@ function MyApp({ Component, pageProps }) {
               showOnShallow={false}
             />
             <Nav />
-            <AnimatePresence mode='wait' >
-              <Component {...pageProps} />
+            <AnimatePresence exitBeforeEnter >
+              <Component {...pageProps} key={router.pathname} />
             </AnimatePresence>
           </Hydrate>
         </QueryClientProvider>
