@@ -7,15 +7,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   /* font-family: 'Comic Neue', cursive; */
-  overflow-x: hidden;
-  --removed-scroll-width:0 !important;
-}
-
-@media (max-width:480px) {
-  #__next {
-    position: relative;
-    padding-right: inherit;
-  }
+  width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
 }
 
 a {
@@ -102,6 +96,15 @@ section {
 }
 
 @media (max-width:480px) {
+  /* #__next{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+    width: 100%;
+  } */
+
   header h1 {
     font-size: 1.6rem;
   }
@@ -111,9 +114,10 @@ section {
   }
 
   header .profile {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     font-size: 1rem;
+    margin-left: 0;
   }
 }
 

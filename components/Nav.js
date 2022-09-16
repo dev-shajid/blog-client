@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getSession, useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
-
+import { useMediaQuery } from 'react-responsive'
 import { Avatar, Menu, Divider, ListItemIcon, MenuItem, Tooltip, Button, IconButton, Box } from '@mui/material';
-import { Logout, PersonAdd, Settings } from '@mui/icons-material';
+import { Logout, PersonAdd, Settings, BorderColor } from '@mui/icons-material';
 import SpotlightSearchBar from './SpotlightSearchBar';
 
 const Nav = () => {
@@ -12,6 +12,7 @@ const Nav = () => {
   const router = useRouter()
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false)
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
 
   const handleClick = (event) => {
     setOpen(true)
@@ -32,6 +33,18 @@ const Nav = () => {
       .then(res => router.push('/login'))
   }
 
+  useEffect(() => {
+    if (open) {
+      document.documentElement.style.overflow = 'hidden'
+      if(!isMobile){
+          document.documentElement.style.paddingRight = '8px'
+      }
+    } else {
+      document.documentElement.style.overflow = 'auto'
+      document.documentElement.style.paddingRight = '0'
+    }
+  }, [open])
+
   return (
     <>
       {
@@ -44,21 +57,21 @@ const Nav = () => {
                 {
                   (status == 'authenticated' && session?.user?.name) ?
                     <>
-                      <SpotlightSearchBar/>
+                      <SpotlightSearchBar />
                       <Link href='/post'><Button className={'create_post_button'} sx={{ textTransform: 'inherit' }} variant='outlined'>Create Posts</Button></Link>
                       <Tooltip title="Account settings">
                         <div className='profile'>
-                        <IconButton
-                          onClick={handleClick}
-                          size="small"
-                          // sx={{ ml: 2 }}
-                          aria-controls={open ? 'account-menu' : undefined}
-                          aria-haspopup="true"
-                          aria-expanded={open ? 'true' : undefined}
+                          <IconButton
+                            onClick={handleClick}
+                            size="small"
+                            sx={{ color: 'white', textTransform: 'uppercase' }}
+                            aria-controls={open ? 'account-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
                           >
-                          <Avatar sx={{ background:'none', padding:'5px'}} alt={session.user.name} src={'/'}/>
-                        </IconButton>
-                          </div>
+                            <Avatar sx={{ background: 'none', padding: '5px' }} alt={session.user.name} src={'/'} />
+                          </IconButton>
+                        </div>
                       </Tooltip>
 
                       {/* Menu Items */}
@@ -103,9 +116,9 @@ const Nav = () => {
                         </MenuItem>
                         <MenuItem onClick={() => handleClose({ route: 'post' })} >
                           <ListItemIcon>
-                            <PersonAdd fontSize="small" />
+                            <BorderColor fontSize="small" />
                           </ListItemIcon>
-                          Create a New Post
+                          Create New Post
                         </MenuItem>
                         <Divider />
                         <MenuItem onClick={handleClose} >

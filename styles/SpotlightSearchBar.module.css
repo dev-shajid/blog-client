@@ -3,17 +3,19 @@
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     width: 100vw;
     height: 100%;
     background-color: #00000050;
     z-index: 9999;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     backdrop-filter: blur(6px);
     opacity: 0;
     visibility: hidden;
-    transition: .3s;
+    transition: opacity visibility .3s;
 }
 
 .active{
@@ -27,9 +29,9 @@
     width: 100%;
     margin-top: 5rem;
     border-radius: 4px;
-    transition: .3s;
     transform: translateY(-50px);
     opacity: 0;
+    transition: transform .3s;
 }
 
 .active .wrapper{
