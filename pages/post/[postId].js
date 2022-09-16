@@ -114,7 +114,7 @@ const Post = ({ post: data }) => {
               </div>
               <div className={style.post_author_main_follow}>Follow</div>
               <div className={style.post_author_main_description}>
-                I'm a web developer, graphic designer, type designer, musician, comicbook-geek, LEGO-collector, food lover … as well as husband and father, located just south of Copenhagen, Denmark.
+                I am a web developer, graphic designer, type designer, musician, comicbook-geek, LEGO-collector, food lover … as well as husband and father, located just south of Copenhagen, Denmark.
               </div>
             </div>
           </div>
