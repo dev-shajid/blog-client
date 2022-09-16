@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import styles from '../styles/Post.module.css'
+import styles from '../styles/SinglePost.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Avatar } from '@mui/material'
 import Moment from 'react-moment';
 
-const Post = ({ post }) => {
+const SinglePost = ({ post }) => {
     
     return (
         <>
@@ -51,7 +51,7 @@ const Post = ({ post }) => {
     )
 }
 
-export default Post
+export default SinglePost
 
 
 const BlurImage = ({ image }) => {

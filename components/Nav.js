@@ -7,6 +7,22 @@ import { Avatar, Menu, Divider, ListItemIcon, MenuItem, Tooltip, Button, IconBut
 import { Logout, PersonAdd, Settings, BorderColor } from '@mui/icons-material';
 import SpotlightSearchBar from './SpotlightSearchBar';
 
+export const getServerSideProps= async ()=>{
+  const session = await getSession(ctx)
+  if (session?.user?.name) {
+    return {
+      props: {}
+    }
+  } else {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/login`
+      }
+    }
+  }
+}
+
 const Nav = () => {
   const { data: session, status } = useSession()
   const router = useRouter()
@@ -58,7 +74,7 @@ const Nav = () => {
                   (status == 'authenticated' && session?.user?.name) ?
                     <>
                       <SpotlightSearchBar />
-                      <Link href='/post'><Button className={'create_post_button'} sx={{ textTransform: 'inherit' }} variant='outlined'>Create Posts</Button></Link>
+                      <Button className={'create_post_button'} sx={{ textTransform: 'inherit' }} variant='outlined'><Link href='/post'>Create Posts</Link></Button>
                       <Tooltip title="Account settings">
                         <div className='profile'>
                           <IconButton

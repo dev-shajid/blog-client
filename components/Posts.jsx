@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useRef } from 'react'
 import { usePostContext } from '../store'
 import LoadingPost from './LoadingPost'
-import Post from './Post'
+import SinglePost from './SinglePost'
 import Transitions from './Transitions'
 
 const fetchPosts = async ({ pageParam = 1 }) => {
@@ -78,7 +78,7 @@ const Posts = () => {
                                     <div key={i}>
                                         {page?.message?.map((post, index) => (
                                             <div key={index}>
-                                                <Post post={post} />
+                                                <SinglePost post={post} />
                                             </div>
                                         ))}
                                     </div>

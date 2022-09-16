@@ -69,6 +69,7 @@
 
 .tag_container input{
     width: auto !important;
+    background-color: transparent;
 }
 
 .buttons {
