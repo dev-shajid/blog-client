@@ -52,6 +52,7 @@ const PostEditor = ({ setActive }) => {
                 toast.dismiss(toastId)
                 setActive(false)
                 toast.error(err.response.data.error)
+                console.log({error:err});
             }
 
         } else {

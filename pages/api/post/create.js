@@ -5,7 +5,6 @@ import { getSession } from 'next-auth/react'
 import Post from '../../../models/postSchema';
 import path from 'path';
 import cloudinary from '../../../lib/cloudinary'
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 export const config = {
     api: {
