@@ -49,6 +49,10 @@ header nav {
   align-items: center;
 }
 
+header nav a:last-child{
+  margin-left: 1rem;
+}
+
 .profile {
   height: 40px;
   width: 40px;
@@ -78,8 +82,13 @@ section {
 /* TODO: */
 .ql-container {
   min-height: 340px;
-  font-size: 20px !important;
+  font-size: 18px !important;
   font-family: 'Comic Neue' !important;
+}
+
+.Post_post_content_wrapper__qEDpH .ql-container.ql-snow{
+  border: none !important;
+
 }
 
 .ql-snow .ql-editor .ql-code-block-container {
@@ -94,14 +103,9 @@ section {
 }
 
 @media (max-width:480px) {
-  /* #__next{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-    width: 100%;
-  } */
+  .ql-container {
+    font-size: 14px !important;
+  }
 
   header h1 {
     font-size: 1.6rem;
@@ -121,7 +125,7 @@ section {
 
 .ql-container iframe {
   width: 80%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/9 !important;
 }
 
 /* pre.ql-syntax {
@@ -129,7 +133,7 @@ section {
 } */
 
 .post_cover_image {
-  aspect-ratio: 5/3;
+  aspect-ratio: 6/3;
   overflow: hidden;
   max-width: 700px;
   /* padding: 10px; */

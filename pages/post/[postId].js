@@ -20,9 +20,11 @@ export const getServerSideProps = async (ctx) => {
   if (session?.user?.name) {
     const res = await fetch(`${process.env.CLIENT_URL}/api/post/${ctx.query.postId}`)
     const data = await res.json()
-    return {
-      props: {
-        post: data.message
+    if(data){
+      return {
+        props: {
+          post: data.message
+        }
       }
     }
   } else {

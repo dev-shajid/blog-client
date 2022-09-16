@@ -35,8 +35,8 @@ const Nav = () => {
     setAnchorEl(event.currentTarget);
     document.documentElement.style.overflow = 'hidden'
   }
-  const handleClose = ({ route }) => {
-    route ? router.push(route) : null
+  const handleClose = (path) => {
+    if(path?.route)router.push(path.route)
     setAnchorEl(null)
     setOpen(false)
     document.getElementsByTagName("body")[0].style.paddingRight = '0px !important'
@@ -44,9 +44,8 @@ const Nav = () => {
   }
 
   const handleLogout = (e) => {
-    handleClose()
     signOut({ redirect: false })
-      .then(res => router.push('/login'))
+    handleClose('/')
   }
 
   useEffect(() => {
