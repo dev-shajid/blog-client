@@ -18,7 +18,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export const getServerSideProps = async (ctx) => {
   const session = await getSession(ctx)
   if (session?.user?.name) {
-    const res = await fetch(`http://localhost:3000/api/post/${ctx.query.postId}`)
+    const res = await fetch(`${process.env.CLIENT_URL}/api/post/${ctx.query.postId}`)
     const data = await res.json()
     return {
       props: {
