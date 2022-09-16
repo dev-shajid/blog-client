@@ -207,3 +207,7 @@ section {
 ::-webkit-scrollbar-track-piece {
   background-color: #dddddd00 !important;
 }
+
+.nprogress-busy .spinner{
+  display: none !important;
+}

@@ -121,23 +121,57 @@
     border-color: rgb(164, 164, 164);
 }
 
-/* .post_content_wrapper .post_description > div{
-    border: none !important;
-} */
-
 /* TODO: */
 .post_author_main_profile {
+    padding: 15px;
+    max-width: 300px;
+    border: 1px solid lightgray;
+    border-top: 40px solid blueviolet;
+    border-radius: 5px;
+}
+
+.post_author_main_info {
+    display: flex;
+    align-items: center;
+}
+
+.post_author_main_img {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: lightsteelblue;
+}
+
+.post_author_main_name {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.post_author_main_follow {
+    background-color: blueviolet;
+    color: white;
+    width: 100%;
     padding: 10px;
-    min-width: 300px;
-    background-color: aliceblue;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.post_author_main_description {
+    line-height: 1.5rem;
+    color: gray;
 }
 
 
 /* TODO: Responsiveness */
-@media (max-width:768px) {
-    .post_author_main_profile{
+@media (max-width:1024px) {
+    .post_author_main_profile {
         display: none;
     }
+}
+@media (max-width:768px) {
 
     .post_info .post_info_author_img {
         width: 40px;
@@ -146,20 +180,20 @@
     .post_info .post_info_author_name {
         font-size: 1rem;
     }
-    
+
     .post_info .post_time {
         font-size: .8rem;
     }
-    
+
     .post_details .post_title {
         font-size: 2rem;
         margin-bottom: 5px;
     }
-    
+
     .post_content_wrapper .post_tags {
         margin-bottom: .8rem;
     }
-    
+
     .post_content_wrapper .post_tag {
         border: 1px solid transparent;
         font-size: .8rem;
@@ -171,7 +205,7 @@
 }
 
 @media (max-width:480px) {
-    .post_react{
+    .post_react {
         display: none;
     }
 
@@ -186,20 +220,20 @@
     .post_info .post_info_author_name {
         font-size: 1rem;
     }
-    
+
     .post_info .post_time {
         font-size: .8rem;
     }
-    
+
     .post_details .post_title {
         font-size: 2rem;
         margin-bottom: 5px;
     }
-    
+
     .post_content_wrapper .post_tags {
         margin-bottom: .8rem;
     }
-    
+
     .post_content_wrapper .post_tag {
         border: 1px solid transparent;
         font-size: .8rem;
