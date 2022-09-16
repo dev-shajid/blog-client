@@ -36,7 +36,12 @@ const PostEditor = ({ setActive }) => {
             const toastId = toast.loading('Loading...')
             setActive(true)
             try {
-                const res = await axios.post('/api/post/create', form)
+                const res = await fetch('/api/post/create', {
+                    method:'POST',
+                    body:form
+                })
+                const data = await res.json()
+                console.log({res, data});
                 if (res.status == 200) {
                     dispatch({ type: 'UPDATE_TRUE' })
                     toast.dismiss(toastId)
@@ -51,7 +56,7 @@ const PostEditor = ({ setActive }) => {
             } catch (err) {
                 toast.dismiss(toastId)
                 setActive(false)
-                toast.error(err.response.data.error)
+                toast.error(err.message)
                 console.log({error:err});
             }
 
