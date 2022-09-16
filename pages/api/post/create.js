@@ -77,8 +77,8 @@ const handler = nc({
                     const userId = session.user._id
 
                     if (req.file) {
-                        if (req.file.size > 1024 * 1024 * 2) {
-                            res.status(400).json({ error: 'File size should be less then 2 MB', size: req.file.size / (1024 * 1024) })
+                        if (req.file.size > 1024 * 1024 * 5) {
+                            res.status(400).json({ error: 'File size should be less then 5 MB', size: req.file.size / (1024 * 1024) })
                         } else {
                             // Upload image to cloudinary
                             const result = await cloudinary.uploader.upload(req.file.path, {
@@ -86,7 +86,7 @@ const handler = nc({
                             });
 
                             const imageUrl = result.url ? result.url : ''
-                            const post = await Post.create({ title, description, tags, image: imageUrl, user: userId })
+                            const post = await Post.create({ title, description, tags: tags || '', image: imageUrl, user: userId })
 
                             if (post) {
                                 res.status(200).json({ message: post })

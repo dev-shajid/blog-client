@@ -33,7 +33,7 @@ const Posts = () => {
             ['posts;'],
             fetchPosts,
             {
-                getNextPageParam: (_, pages) => pages.length < Math.ceil(number.number / 10) ? pages.length + 1 : undefined,
+                getNextPageParam: (_, pages) => pages.length < Math.ceil(number?.number / 10) ? pages.length + 1 : undefined,
                 // enabled: true,
             }
         )

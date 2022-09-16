@@ -30,7 +30,7 @@ const PostEditor = ({ setActive }) => {
             let form = new FormData()
             form.append('title', title)
             form.append('description', description)
-            form.append('tags', selectedTags)
+            // form.append('tags', selectedTags)
             form.append('image', image)
 
             const toastId = toast.loading('Loading...')
