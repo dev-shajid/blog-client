@@ -125,6 +125,7 @@
 .post_author_main_profile {
     padding: 15px;
     max-width: 300px;
+    background-color: white;
     border: 1px solid lightgray;
     border-top: 40px solid blueviolet;
     border-radius: 5px;
