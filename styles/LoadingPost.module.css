@@ -74,20 +74,6 @@
     align-items: center;
 }
 
-.post_like{
-    margin-right: 2rem;
-    height: 30px;
-    width: 80px;
-    border-radius: 3px;
-}
-
-.post_comment{
-    margin-right: 2rem;
-    height: 30px;
-    width: 80px;
-    border-radius: 3px;
-}
-
 .post_save_button{
     height: 30px;
     width: 100px;
@@ -101,4 +87,126 @@
     background-color: #DDDBDD;
     height: 100%;
     width: 300%;
+}
+
+@media screen and (max-width: 768px) {
+    .post_author_image{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+    
+    .post_author_name{
+        height: 15px;
+        width: 150px;
+        border-radius: 3px;
+        display: flex;
+    }
+    
+    .post_published_time{
+        height: 15px;
+        width: 100px;
+        border-radius: 3px;
+        margin-top: 1rem;
+    }
+    
+    .post_title{
+        height: 25px;
+        width: 100%;
+        border-radius: 4px;
+        margin-top: 2rem;
+    }
+    
+    .post_tags{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    
+    .post_tag{
+        margin-right: 1rem;
+        height: 20px;
+        width: 60px;
+        border-radius: 3px;
+    }
+    
+    .post_footer{
+        margin: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /* .post_body {
+        margin: 1rem;
+    }
+
+    .post_author_image {
+        height: 35px;
+        width: 35px;
+    }
+
+    .post_author_name {
+        font-size: .9rem;
+    }
+
+    .post_published_time {
+        font-size: .7rem;
+        margin-top: .5rem;
+    }
+
+    .post_title {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .post_tag {
+        font-size: .7rem;
+        margin-right: .2rem;
+    }
+
+    .post_save_button {
+        padding: .3rem 1.3rem;
+        font-size: .7rem;
+    } */
+    .post_body{
+        margin: 1rem;
+    }
+
+    .post_author_image{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+    
+    .post_author_name{
+        height: 15px;
+        width: 150px;
+    }
+    
+    .post_published_time{
+        height: 15px;
+        width: 100px;
+        margin-top: .5rem;
+    }
+    
+    .post_title{
+        height: 20px;
+        margin-top: 1rem;
+    }
+    
+    .post_tags{
+        margin-top: .5rem;
+    }
+    
+    .post_tag{
+        height: 15px;
+        width: 60px;
+        margin-right: .2rem;
+    }
 }

@@ -1,0 +1,70 @@
+.container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: #00000050;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+
+.active{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.wrapper{
+    background: rgb(249, 250, 255);
+    max-width: 600px;
+    width: 100%;
+    margin-top: 5rem;
+    border-radius: 4px;
+    transition: .3s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.active .wrapper{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.search_box{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid lightgray;
+}
+
+.search_box input{
+    border: none;
+    outline: none;
+    font-size: 18px;
+    flex: 1;
+    background: transparent;
+    padding: 0 10px;
+}
+
+.suggestion_box{
+    padding: 10px;
+}
+
+.suggestion_box .suggestion_title{
+    font-size: 18px;
+    padding: 15px;
+    transition: .3s;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.suggestion_title:hover{
+    background: rgb(223, 222, 222);
+}

@@ -18,6 +18,10 @@ const UserSchema = mongoose.Schema({
         required: true,
         trim: true,
     },
+    profile:{
+        type: String,
+        default: ''
+    },
     verified: {
         type: Boolean,
         require: true,

@@ -75,8 +75,8 @@
 
 .post_title {
     color: rgb(42, 42, 42);
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 1.6rem;
+    font-weight: 500;
     margin-top: 1rem;
 }
 
@@ -129,29 +129,35 @@
 }
 
 @media screen and (max-width: 768px) {
+
+    .post_author_image {
+        height: 40px;
+        width: 40px;
+    }
+
     .post_author_name {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .post_published_time {
-        font-size: .9rem;
+        font-size: .8rem;
     }
 
     .post_title {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
     }
 
     .post_tag {
-        font-size: .9rem;
+        font-size: .8rem;
     }
 
     .post_save_button {
         padding: .3rem 1.5rem;
-        font-size: .9rem;
+        font-size: .8rem;
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 480px) {
 
     .post_body {
         margin: 1rem;
@@ -163,25 +169,26 @@
     }
 
     .post_author_name {
-        font-size: 1rem;
+        font-size: .9rem;
     }
 
     .post_published_time {
-        font-size: .8rem;
+        font-size: .7rem;
         margin-top: 0rem;
     }
 
     .post_title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 500;
     }
 
     .post_tag {
-        font-size: .8rem;
+        font-size: .7rem;
         margin-right: .2rem;
     }
 
     .post_save_button {
         padding: .3rem 1.3rem;
-        font-size: .8rem;
+        font-size: .7rem;
     }
 }

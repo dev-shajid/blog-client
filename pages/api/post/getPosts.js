@@ -14,7 +14,7 @@ const handler = async (req, res) => {
         await dbConnect()
         const { _limit, _page } = req.query
         let skip = (_page - 1) * _limit
-        const posts = await Post.find().sort({ createdAt: -1 }).limit(_limit).skip(skip)
+        const posts = await Post.find().sort({ createdAt: -1 }).limit(_limit).skip(skip).populate({path:'user', select:['name', 'email', 'profile']})
         res.status(200).json({ message: posts })
 
     } catch (err) {

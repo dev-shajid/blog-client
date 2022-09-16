@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import styles from '../styles/Post.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Avatar } from '@mui/material'
+import Moment from 'react-moment';
 
 const Post = ({ post }) => {
+    
     return (
         <>
             {/* single post here */}
@@ -15,21 +18,20 @@ const Post = ({ post }) => {
                 <div className={styles.post_body}>
                     <div className={styles.post_author}>
                         <div className={styles.post_author_image}>
-
+                            <Avatar sx={{height:'100%', width:'100%'}} alt={post.user.name} src='https://mui.com/static/images/avatar/1.jpg' />
                         </div>
                         <div className={styles.post_author_details}>
-                            <div className={styles.post_author_name}>Mohammed Sajidul Islam</div>
-                            <div className={styles.post_published_time}>5 minutes ago</div>
+                            <div className={styles.post_author_name}>{post.user.name}</div>
+                            <div className={styles.post_published_time}><Moment fromNow>{post.createdAt}</Moment></div>
                         </div>
                     </div>
                     <div className={styles.post_title}>
                         <Link href={`/post/${post._id}`} passHref>{post.title}</Link>
-                        {/* <Link href={`/post/${post._id}`} passHref>{post.title}</Link> */}
                     </div>
                     <div className={styles.post_tags}>
                         {
                             /* tags here */
-                            ['HTML', 'CSS', 'JavaScript', 'React JS'].map((tag, index) => {
+                            post.tags && post.tags.split(',').map((tag, index) => {
                                 return (
                                     <div key={index} className={styles.post_tag}>
                                         #{tag}

@@ -12,6 +12,10 @@ const PostSchema = mongoose.Schema({
     description: {
         type: String,
     },
+    tags: {
+        type: String,
+        default: '',
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

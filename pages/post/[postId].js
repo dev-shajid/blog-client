@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
 
-const Post = () => {
+const Post = () => { 
     const {query:{postId}} = useRouter()
   return (
     <>

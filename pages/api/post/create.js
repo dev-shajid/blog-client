@@ -72,7 +72,7 @@ const handler = nc({
         try {
             const session = await getSession({ req })
             if (session) {
-                const { title, description } = req.body
+                let { title, description, tags } = req.body
                 if (title && description) {
                     const userId = session.user._id
 
@@ -80,14 +80,13 @@ const handler = nc({
                         if (req.file.size > 1024 * 1024 * 2) {
                             res.status(400).json({ error: 'File size should be less then 2 MB', size: req.file.size / (1024 * 1024) })
                         } else {
-                            console.log(req.file)
                             // Upload image to cloudinary
                             const result = await cloudinary.uploader.upload(req.file.path, {
                                 folder: 'dev-blog'
                             });
 
                             const imageUrl = result.url ? result.url : ''
-                            const post = await Post.create({ title, description, image: imageUrl, user: userId })
+                            const post = await Post.create({ title, description, tags, image: imageUrl, user: userId })
 
                             if (post) {
                                 res.status(200).json({ message: post })

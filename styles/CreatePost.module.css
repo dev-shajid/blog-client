@@ -40,7 +40,7 @@
 }
 
 .create_post_title {
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 
 .create_post_title textarea {
@@ -61,6 +61,14 @@
     color: gray;
     font-size: 48px;
     font-weight: 700;
+}
+
+.tag_container{
+    margin-bottom: 1rem;
+}
+
+.tag_container input{
+    width: auto !important;
 }
 
 .buttons {

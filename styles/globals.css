@@ -8,15 +8,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   /* font-family: 'Comic Neue', cursive; */
   overflow-x: hidden;
-}
-
-#__next {
-  /* position: absolute;
-  right: 0;
-  left: 0;
-  top: 0; */
-  width: 100vw;
-  /* padding-right: 5px; */
+  --removed-scroll-width:0 !important;
 }
 
 @media (max-width:480px) {
@@ -51,6 +43,10 @@ header {
   padding: 0 1rem;
 }
 
+header h1 {
+  font-size: 2rem;
+}
+
 header nav {
   display: flex;
   justify-content: center;
@@ -67,8 +63,9 @@ header nav a {
   border-radius: 50%;
   background: gray;
   margin-left: 20px;
-  text-align: center;
-  line-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2rem;
   cursor: pointer;
 }
@@ -104,14 +101,30 @@ section {
   }
 }
 
+@media (max-width:480px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  header nav .create_post_button {
+    display: none !important;
+  }
+
+  header .profile {
+    height: 30px;
+    width: 30px;
+    font-size: 1rem;
+  }
+}
+
 .ql-container iframe {
   width: 80%;
   aspect-ratio: 16/9;
 }
 
-pre.ql-syntax {
-  /* font-size: 14px; */
-}
+/* pre.ql-syntax {
+  font-size: 14px;
+} */
 
 .post_cover_image {
   aspect-ratio: 5/3;
@@ -133,7 +146,7 @@ pre.ql-syntax {
   font-style: inherit !important;
 }
 
-.style_react-code-input__1Z-nz{
+.style_react-code-input__1Z-nz {
   display: flex;
   justify-content: center;
 }
@@ -165,7 +178,6 @@ pre.ql-syntax {
 
 ::-webkit-scrollbar {
   width: 8px;
-  height: 15px;
 }
 
 ::-webkit-scrollbar-thumb {

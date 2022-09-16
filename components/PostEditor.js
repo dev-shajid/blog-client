@@ -5,6 +5,7 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/router';
 import { usePostContext } from '../store';
+import { TagsInput } from "react-tag-input-component";
 
 const PostEditor = ({ setActive }) => {
     const [description, setDescription] = useState('')
@@ -14,6 +15,8 @@ const PostEditor = ({ setActive }) => {
     const { state, dispatch } = usePostContext()
     const router = useRouter()
     const imageRef = useRef()
+
+    const [selectedTags, setSelectedTags] = useState([])
 
     function handleTitleChange(e) {
         e.target.style.height = "5px !important";
@@ -27,6 +30,7 @@ const PostEditor = ({ setActive }) => {
             let form = new FormData()
             form.append('title', title)
             form.append('description', description)
+            form.append('tags', selectedTags)
             form.append('image', image)
 
             const toastId = toast.loading('Loading...')
@@ -83,6 +87,16 @@ const PostEditor = ({ setActive }) => {
                         type='text'
                         placeholder='New post title here...'
                         onChange={handleTitleChange}
+                    />
+                </div>
+
+                {/* Tag Input  */}
+                <div className={style.tag_container} >
+                    <TagsInput
+                        value={selectedTags}
+                        onChange={setSelectedTags}
+                        name="Tag"
+                        placeHolder="Enter Tag"
                     />
                 </div>
 
