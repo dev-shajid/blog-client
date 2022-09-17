@@ -56,7 +56,7 @@ const PostEditor = ({ setActive }) => {
             } catch (err) {
                 toast.dismiss(toastId)
                 setActive(false)
-                toast.error(err.message)
+                toast.error('Something went wrong')
                 console.log({error:err});
             }
 

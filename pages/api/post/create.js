@@ -36,9 +36,8 @@ const upload = multer({
 
 const handler = nc({
     onError: (err, req, res, next) => {
-        // console.error(err.message);
-        // res.status(500).json({ error: "Something broke!" });
-        next()
+        console.error(err.message);
+        res.status(500).json({ error: "Something broke!" });
     },
     onNoMatch: (req, res) => {
         res.status(404).json("Page is not found");
@@ -67,8 +66,8 @@ const handler = nc({
     //     }
     // })
     .post(async (req, res) => {
-        await dbConnect()
         try {
+            await dbConnect()
             const session = await getSession({ req })
             if (session) {
                 let { title, description, tags } = req.body
@@ -104,7 +103,7 @@ const handler = nc({
             }
             // res.json({ body: req.body, file: req.file })
         } catch (err) {
-            res.status(520).json({ error: err.message })
+            res.status(400).json({ error: err })
         }
     })
 
