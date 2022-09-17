@@ -15,6 +15,7 @@
     padding: 0 10px;
     max-width: 100%;
     overflow: hidden;
+    flex: 1;
 }
 
 .post_details {
@@ -119,6 +120,10 @@
 
 .post_content_wrapper .post_tag:hover {
     border-color: rgb(164, 164, 164);
+}
+
+.post_page_ql_container{
+    min-height: inherit;
 }
 
 /* TODO: */

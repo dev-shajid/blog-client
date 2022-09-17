@@ -66,6 +66,7 @@ const Post = ({ post: data }) => {
               sx={{ color: '#536bcd!important' }}
             />
           </Box>
+          <div style={{flex:1}}>
           <div className={style.post_details_container}>
             <div className={style.post_details}>
               <div className={style.post_cover_image}>
@@ -94,7 +95,7 @@ const Post = ({ post: data }) => {
                   </div>
                   <div className={style.post_description}>
                     {/* Preview Editor Html */}
-                    <div className='ql-container ql-snow'>
+                    <div className={`ql-container ql-snow ${style.post_page_ql_container}`}>
                       <div className='ql-editor'>
                         <div dangerouslySetInnerHTML={{ __html: data.description }} />
                       </div>
@@ -103,6 +104,7 @@ const Post = ({ post: data }) => {
                 </div>
               </div>
             </div>
+          </div>
           </div>
           <div>
             <div className={style.post_author_main_profile}>

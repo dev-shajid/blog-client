@@ -41,7 +41,7 @@ const PostEditor = ({ setActive }) => {
                     body:form
                 })
                 const data = await res.json()
-                console.log({res, data});
+                console.log(data);
                 if (res.status == 200) {
                     dispatch({ type: 'UPDATE_TRUE' })
                     toast.dismiss(toastId)
@@ -57,7 +57,7 @@ const PostEditor = ({ setActive }) => {
                 toast.dismiss(toastId)
                 setActive(false)
                 toast.error('Something went wrong')
-                console.log({error:err});
+                // console.log({error:err});
             }
 
         } else {
