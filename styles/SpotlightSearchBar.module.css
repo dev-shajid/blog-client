@@ -15,7 +15,7 @@
     backdrop-filter: blur(6px);
     opacity: 0;
     visibility: hidden;
-    transition: opacity visibility .3s;
+    transition: .3s;
 }
 
 .active{
@@ -31,7 +31,7 @@
     border-radius: 4px;
     transform: translateY(-50px);
     opacity: 0;
-    transition: transform .3s;
+    transition: .3s;
 }
 
 .active .wrapper{
