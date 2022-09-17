@@ -66,7 +66,7 @@ const Post = ({ post: data }) => {
               sx={{ color: '#536bcd!important' }}
             />
           </Box>
-          <div style={{flex:1}}>
+          <div style={{flex:1, maxWidth:'center'}}>
           <div className={style.post_details_container}>
             <div className={style.post_details}>
               <div className={style.post_cover_image}>
