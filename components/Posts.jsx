@@ -68,7 +68,7 @@ const Posts = () => {
     return (
         <Transitions>
             <section>
-                <div ref={ref} style={{ maxWidth: "600px", padding: "5px 10px", margin: "0 auto" }}>
+                <div ref={ref} style={{ maxWidth: "600px", padding: "0px", margin: "0 auto" }}>
                     {
                         isLoading || (isFetching && state.update) ?
                             [1, 2].map((v, i) => <LoadingPost key={i} />)

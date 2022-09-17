@@ -103,8 +103,16 @@ section {
 }
 
 @media (max-width:480px) {
+  section{
+    /* padding: ; */
+  }
+
   .ql-container {
-    font-size: 14px !important;
+    font-size: 16px !important;
+  }
+
+  .ql-snow .ql-editor .ql-code-block-container {
+    font-size: 16px;
   }
 
   header h1 {
