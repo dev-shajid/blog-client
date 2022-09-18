@@ -1,0 +1,33 @@
+.nav{
+    /* margin-top: 1rem; */
+    position: sticky;
+    position: -webkit-sticky;
+    top: 110px;
+}
+
+.items{
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    display: grid;
+    place-content: center;
+    grid-template-columns: auto 1fr;
+    grid-gap: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 6px 20px;
+    user-select: none;
+}
+
+.items:hover{
+    background: rgba(211, 211, 211, 0.342);
+}
+
+.items div{
+    margin: 0;
+}
+
+@media (max-width:768px) {
+    .nav{
+        display: none;
+    }
+}

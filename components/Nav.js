@@ -65,7 +65,7 @@ const Nav = () => {
       {
         status == 'loading' ?
           <></> :
-          <>
+          <div className='header_container'>
             <header>
               <h1><Link href='/'>LOGO</Link></h1>
               <nav>
@@ -159,7 +159,7 @@ const Nav = () => {
               </nav>
             </header>
             <hr style={{ margin: 0, borderColor: '#ffffff40' }} />
-          </>
+          </div>
       }
     </>
   )

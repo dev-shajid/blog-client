@@ -7,12 +7,15 @@ import '../styles/globals.css'
 import NextNProgress from "nextjs-progressbar";
 import Nav from '../components/Nav'
 import ContextProvider from '../store';
+import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps, router }) {
   const [queryClient] = useState(() => new QueryClient())
+
   return <>
     <SessionProvider session={pageProps.session} refetchInterval={1000}>
       <ContextProvider>
+            <Layout>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <Toaster
@@ -34,6 +37,7 @@ function MyApp({ Component, pageProps, router }) {
             </AnimatePresence>
           </Hydrate>
         </QueryClientProvider>
+            </Layout>
       </ContextProvider>
     </SessionProvider>
   </>

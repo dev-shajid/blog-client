@@ -19,7 +19,7 @@ const Transitions = ({ children }) => {
             initial={{ opacity: 0, x: isMobile ? '0vw' : '0' }}
             animate={{ opacity: 1, x: '0' }}
             exit={{ opacity: 0, x: '0vw' }}
-            transition={{ duration: .4 }}
+            transition={{ duration: .5 }}
         >
             {children}
         </motion.div >

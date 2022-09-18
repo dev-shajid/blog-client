@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    /* padding: 0 1rem; */
+}
+
+.right_nav{
+    max-width: 200px;
+    width: 100%;
+}
+
+@media (max-width:1024px) {
+    .right_nav{
+        display: none;
+    }
+}

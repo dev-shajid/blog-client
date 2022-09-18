@@ -183,6 +183,10 @@
         width: 40px;
     }
 
+    .post_react {
+        display: none;
+    }
+
     .post_info .post_info_author_name {
         font-size: 1rem;
     }

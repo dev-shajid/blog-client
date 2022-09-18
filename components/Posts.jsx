@@ -38,9 +38,9 @@ const Posts = () => {
             }
         )
 
-    useEffect(()=>{
+    useEffect(() => {
         refetch()
-    },[])
+    }, [])
 
     useEffect(() => {
         if (router.route !== '/') {
@@ -66,9 +66,9 @@ const Posts = () => {
     if (isError) return <div>Error! {JSON.stringify(error)}</div>
 
     return (
-        <Transitions>
-            <section>
-                <div ref={ref} style={{ maxWidth: "600px", padding: "0px", margin: "0 auto" }}>
+        <div style={{ flex: 1 }}>
+            <Transitions>
+                <div ref={ref} style={{ maxWidth: "650px", padding: "0px", margin: "0 auto" }}>
                     {
                         isLoading || (isFetching && state.update) ?
                             [1, 2].map((v, i) => <LoadingPost key={i} />)
@@ -89,9 +89,8 @@ const Posts = () => {
                     {isFetching && hasNextPage ? <LoadingPost /> : null}
 
                 </div>
-
-            </section>
-        </Transitions>
+            </Transitions>
+        </div>
     )
 }
 
