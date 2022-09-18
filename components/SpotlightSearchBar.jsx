@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useMediaQuery } from 'react-responsive'
 import style from '../styles/SpotlightSearchBar.module.css'
-export default function SpotlightSearchBar({active, setActive}) {
+export default function SpotlightSearchBar({ active, setActive }) {
     const [value, setValue] = useState('');
     const [debounced] = useDebouncedValue(value, 1000);
     const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
@@ -15,17 +15,17 @@ export default function SpotlightSearchBar({active, setActive}) {
         console.log(debounced)
     }, [debounced])
 
-    useEffect(() => {
-        if (active) {
-            document.documentElement.style.overflow = 'clip'
-            if(!isMobile){
-                document.documentElement.style.paddingRight = '8px'
-            }
-        } else {
-            document.documentElement.style.overflow = 'auto'
-            document.documentElement.style.paddingRight = '0'
-        }
-    }, [active])
+    // useEffect(() => {
+    //     if (active) {
+    //         document.documentElement.style.overflow = 'clip'
+    //         if(!isMobile){
+    //             document.documentElement.style.paddingRight = '8px'
+    //         }
+    //     } else {
+    //         document.documentElement.style.overflow = 'auto'
+    //         document.documentElement.style.paddingRight = '0'
+    //     }
+    // }, [active])
 
     useEffect(() => {
         /**
@@ -47,7 +47,6 @@ export default function SpotlightSearchBar({active, setActive}) {
     return (
         <>
             <div className={`${active && style.active} ${style.container}`}>
-                <div>
                 <div ref={ref} className={style.wrapper}>
                     <div className={style.search_box}>
                         <IconSearch />
@@ -66,7 +65,6 @@ export default function SpotlightSearchBar({active, setActive}) {
                             ))
                         }
                     </div>
-                </div>
                 </div>
             </div>
         </>

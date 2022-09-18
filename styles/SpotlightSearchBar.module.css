@@ -25,9 +25,11 @@
 
 .wrapper{
     background: rgb(249, 250, 255);
+    position: sticky;
+    top: 5rem;
     max-width: 600px;
     width: 100%;
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
     border-radius: 4px;
     transform: translateY(-50px);
     opacity: 0;
@@ -35,7 +37,7 @@
 }
 
 .active .wrapper{
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
 }
 

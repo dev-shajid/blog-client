@@ -53,17 +53,14 @@ const Nav = () => {
     handleClose('/')
   }
 
-  // useEffect(() => {
-  //   if (open) {
-  //     document.documentElement.style.overflow = 'clip !important'
-  //     if (!isMobile) {
-  //       document.documentElement.style.paddingRight = '8px'
-  //     }
-  //   } else {
-  //     document.documentElement.style.overflow = 'visible'
-  //     document.documentElement.style.paddingRight = '0'
-  //   }
-  // }, [open])
+  useEffect(() => {
+    const onScroll = e => {
+      setOpen(false)
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [open]);
 
   return (
     <>
@@ -137,48 +134,50 @@ const Nav = () => {
               </MenuItem>
             </Menu>
             {/* Menu Items */}
-            <Box sx={{backdropFilter:'blur(10px)', borderBottom:'1px solid lightgray', zIndex:'100'}} position='sticky' top='0'>
-            <AppBar sx={{background:'none', backdropFilter:'blur(10px)', boxShadow:'none'}} position='sticky' top='0'>
-              <Box sx={{display:'flex', justifyContent:'space-between', alignItems:'center', width:'100%'}}>
-                <Link href='/'>
-                  <Image
-                    src='/images/nxt.png'
-                    alt='Logo'
-                    height={50}
-                    width={100}
-                    objectFit='contain'
-                  />
-                </Link>
-                <Box sx={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-                  {
-                    (status == 'authenticated' && session?.user?.name) ?
-                      <>
-                        <IconSearch onClick={() => setActive(true)} style={{ color:'black', cursor: 'pointer', marginRight: '1rem' }} />
-                        <Button className={'create_post_button'} sx={{ textTransform: 'inherit' }} variant='outlined'><Link href='/post'>Create Posts</Link></Button>
-                        <Tooltip title="Account settings">
-                          <div className='profile'>
-                            <IconButton
-                              onClick={handleClick}
-                              size="small"
-                              sx={{ color: 'white', textTransform: 'uppercase' }}
-                              aria-controls={open ? 'account-menu' : undefined}
-                              aria-haspopup="true"
-                              aria-expanded={open ? 'true' : undefined}
-                            >
-                              <Avatar sx={{ background: 'none', padding: '5px' }} alt={session.user.name} src={'/'} />
-                            </IconButton>
-                          </div>
-                        </Tooltip>
-                      </> :
-                      <>
-                        <Link href='/login'>Login</Link>
-                        <Link href='/signup'>Signup</Link>
-                      </>
-                  }
+            <Box sx={{ backdropFilter: 'blur(10px)', borderBottom: '1px solid lightgray', zIndex: '100' }} position='sticky' top='0'>
+              <AppBar sx={{ background: 'none', backdropFilter: 'blur(10px)', boxShadow: 'none' }} position='sticky' top='0'>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                  <Link href='/'>
+                    <div style={{ cursor: 'pointer' }}>
+                      <Image
+                        src='/images/nxt.png'
+                        alt='Logo'
+                        height={50}
+                        width={100}
+                        objectFit='contain'
+                      />
+                    </div>
+                  </Link>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    {
+                      (status == 'authenticated' && session?.user?.name) ?
+                        <>
+                          <IconSearch onClick={() => setActive(true)} style={{ color: 'black', cursor: 'pointer', marginRight: '1rem' }} />
+                          <Button className={'create_post_button'} sx={{ textTransform: 'inherit' }} variant='outlined'><Link href='/post'>Create Posts</Link></Button>
+                          <Tooltip title="Account settings">
+                            <div className='profile'>
+                              <IconButton
+                                onClick={handleClick}
+                                size="small"
+                                sx={{ color: 'white', textTransform: 'uppercase' }}
+                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                              >
+                                <Avatar sx={{ background: 'none', padding: '5px' }} alt={session.user.name} src={'/'} />
+                              </IconButton>
+                            </div>
+                          </Tooltip>
+                        </> :
+                        <>
+                          <Link href='/login'>Login</Link>
+                          <Link href='/signup'>Signup</Link>
+                        </>
+                    }
+                  </Box>
                 </Box>
-              </Box>
-              <hr style={{ margin: 0, borderColor: '#ffffff40' }} />
-            </AppBar>
+                <hr style={{ margin: 0, borderColor: '#ffffff40' }} />
+              </AppBar>
             </Box>
           </>
       }

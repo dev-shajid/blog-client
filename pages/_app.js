@@ -8,7 +8,6 @@ import NextNProgress from "nextjs-progressbar";
 import Nav from '../components/Nav'
 import ContextProvider from '../store';
 import Layout from '../components/Layout';
-import Nav2 from '../components/Nav2/Nav2';
 
 function MyApp({ Component, pageProps, router }) {
   const [queryClient] = useState(() => new QueryClient())
@@ -33,7 +32,6 @@ function MyApp({ Component, pageProps, router }) {
               showOnShallow={false}
             />
             <Nav />
-            {/* <Nav2/> */}
             <AnimatePresence exitBeforeEnter >
               <Component {...pageProps} />
             </AnimatePresence>
