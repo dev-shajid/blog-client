@@ -5,15 +5,7 @@ import { useEffect } from 'react';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useMediaQuery } from 'react-responsive'
 import style from '../styles/SpotlightSearchBar.module.css'
-
-function SpotlightControl({ setActive }) {
-    return (
-        <IconSearch onClick={() => setActive(true)} style={{ cursor: 'pointer', marginRight: '1rem' }} />
-    );
-}
-
-export default function SpotlightSearchBar() {
-    const [active, setActive] = useState(false)
+export default function SpotlightSearchBar({active, setActive}) {
     const [value, setValue] = useState('');
     const [debounced] = useDebouncedValue(value, 1000);
     const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
@@ -25,7 +17,7 @@ export default function SpotlightSearchBar() {
 
     useEffect(() => {
         if (active) {
-            document.documentElement.style.overflow = 'hidden'
+            document.documentElement.style.overflow = 'clip'
             if(!isMobile){
                 document.documentElement.style.paddingRight = '8px'
             }
@@ -54,8 +46,8 @@ export default function SpotlightSearchBar() {
 
     return (
         <>
-            <SpotlightControl setActive={setActive} />
             <div className={`${active && style.active} ${style.container}`}>
+                <div>
                 <div ref={ref} className={style.wrapper}>
                     <div className={style.search_box}>
                         <IconSearch />
@@ -74,6 +66,7 @@ export default function SpotlightSearchBar() {
                             ))
                         }
                     </div>
+                </div>
                 </div>
             </div>
         </>

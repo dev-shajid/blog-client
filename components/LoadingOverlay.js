@@ -37,7 +37,7 @@ const LoadingOverlay = ({ overlay, otpBox, setActive, email }) => {
 
   useEffect(() => {
     if (overlay) {
-      document.documentElement.style.overflowY = 'hidden'
+      document.documentElement.style.overflowY = 'clip'
     } else {
       document.documentElement.style.overflowY = 'auto'
     }
