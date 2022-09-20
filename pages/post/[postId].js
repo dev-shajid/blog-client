@@ -51,7 +51,7 @@ const Post = ({ post: data }) => {
       {data?.user?.name && <Transitions>
         <section className={style.post_section}>
           <Box>
-            <Box position='sticky' top='100px' className={style.post_react}>
+            <Box position='sticky' top='105px' className={style.post_react}>
               <Checkbox
                 onClick={() => setChecked({ ...checked, fav: !checked.fav })}
                 checked={checked.fav}

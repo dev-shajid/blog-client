@@ -9,8 +9,7 @@ import SinglePost from './SinglePost'
 import Transitions from './Transitions'
 
 const fetchPosts = async ({ pageParam = 1 }) => {
-    await new Promise((res) => setTimeout(res, 100))
-    // const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10&_page=' + pageParam)
+    // await new Promise((res) => setTimeout(res, 100))
     const res = await axios.get('/api/post/getPosts?_limit=10&_page=' + pageParam)
     return res.data
 }
@@ -30,7 +29,7 @@ const Posts = () => {
 
     const { isLoading, isError, data, error, isFetching, fetchNextPage, hasNextPage, refetch } =
         useInfiniteQuery(
-            ['posts;'],
+            ['posts'],
             fetchPosts,
             {
                 getNextPageParam: (_, pages) => pages.length < Math.ceil(number?.number / 10) ? pages.length + 1 : undefined,

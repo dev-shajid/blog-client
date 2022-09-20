@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+import Link from 'next/link'
 import React from 'react'
 import style from '../styles/LeftNav.module.css'
 
@@ -8,9 +9,11 @@ const LeftNav = () => {
             <nav className={style.nav}>
                 {
                     menus.map((e, i) => (
-                        <div key={e.item} className={style.items}>
-                            <div className={style.icon}>{e.icon}</div>
-                            <div className={style.item}>{e.item}</div>
+                        <div key={e.item}>
+                            <Link href={e.url}><div className={style.items}>
+                                <div className={style.icon}>{e.icon}</div>
+                                <div className={style.item}>{e.item}</div>
+                            </div></Link>
                         </div>
                     ))
                 }
@@ -38,6 +41,7 @@ const menus = [
                 </g>
             </svg>
         </span>,
+        url: '/',
     },
     {
         item: 'Reading List',
@@ -57,7 +61,8 @@ const menus = [
                     <path fill="#E1E8ED" d="M27 31a1 1 0 01-1 1h-8a1 1 0 01-1-1v-3a1 1 0 011-1h8a1 1 0 011 1v3z"></path>
                 </g>
             </svg>
-        </span>
+        </span>,
+        url: '/readinglist'
     },
     {
         item: 'Tags',
@@ -70,7 +75,8 @@ const menus = [
                 </g>
             </svg>
 
-        </span>
+        </span>,
+        url: '/tags'
     },
     {
         item: 'FAQ',
@@ -85,7 +91,8 @@ const menus = [
                 </g>
             </svg>
 
-        </span>
+        </span>,
+        url: '/faq'
     },
     {
         item: 'About',
@@ -101,7 +108,8 @@ const menus = [
                 </g>
             </svg>
 
-        </span>
+        </span>,
+        url: '/about'
     },
     {
         item: 'Contact',
@@ -114,7 +122,8 @@ const menus = [
                 </g>
             </svg>
 
-        </span>
+        </span>,
+        url: '/contact'
     },
 
 ]

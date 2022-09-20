@@ -107,26 +107,17 @@ const Nav = () => {
               transformOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-              <MenuItem>
+              <MenuItem onClick={()=>router.push('/profile')}>
                 <Avatar /> Profile
               </MenuItem>
-              <MenuItem>
-                <Avatar /> My account
-              </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem onClick={()=>router.push('/post')}>
                 <ListItemIcon>
                   <PersonAdd fontSize="small" />
                 </ListItemIcon>
-                Add another account
+                Create New Post
               </MenuItem>
-              <MenuItem>
-                <ListItemIcon>
-                  <Settings fontSize="small" />
-                </ListItemIcon>
-                Settings
-              </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
                   <Logout fontSize="small" />
                 </ListItemIcon>
@@ -134,8 +125,8 @@ const Nav = () => {
               </MenuItem>
             </Menu>
             {/* Menu Items */}
-            <Box sx={{ backdropFilter: 'blur(10px)', borderBottom: '1px solid lightgray', zIndex: '100' }} position='sticky' top='0'>
-              <AppBar sx={{ background: 'none', backdropFilter: 'blur(10px)', boxShadow: 'none' }} position='sticky' top='0'>
+            <Box sx={{ backdropFilter: 'blur(10px)', borderBottom: '1px solid #d3d3d370', zIndex: '100' }} position='sticky' top='0'>
+              <AppBar sx={{ background: '#ffffff40', backdropFilter: 'blur(10px)', boxShadow: 'none' }} position='sticky' top='0'>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                   <Link href='/'>
                     <div style={{ cursor: 'pointer' }}>
@@ -148,12 +139,12 @@ const Nav = () => {
                       />
                     </div>
                   </Link>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box className='nav' sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     {
                       (status == 'authenticated' && session?.user?.name) ?
                         <>
                           <IconSearch onClick={() => setActive(true)} style={{ color: 'black', cursor: 'pointer', marginRight: '1rem' }} />
-                          <Button className={'create_post_button'} sx={{ textTransform: 'inherit' }} variant='outlined'><Link href='/post'>Create Posts</Link></Button>
+                          {!isMobile && <Link href='/post'><Button className={'create_post_button'} sx={{ textTransform: 'inherit', color:'black', borderColor:'black' }} variant='outlined'>Create Posts</Button></Link>}
                           <Tooltip title="Account settings">
                             <div className='profile'>
                               <IconButton

@@ -50,13 +50,17 @@ header h1 {
   font-size: 2rem;
 }
 
-header nav {
+header .nav {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-header nav a:last-child{
+header .nav a{
+  color: #23241f;
+}
+
+header .nav a:last-child{
   margin-left: 1rem;
 }
 
