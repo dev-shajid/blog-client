@@ -52,7 +52,7 @@ export default NextAuth({
                             const user = await User.findOne({ email })
                             if (user && user.verified==true) {
                                 throw new Error("User already exist")
-                            } else if (user && user.verified!=false) {
+                            } else if (user && user.verified==false) {
                                 const otp = genOtp()
                                 await user.update({ token: otp })
                                 await sendEmail({ userEmail: email, subject: 'Verify your account', otp })
