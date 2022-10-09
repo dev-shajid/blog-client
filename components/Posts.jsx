@@ -20,7 +20,6 @@ const fetchPostsNumber = async () => {
 }
 
 const Posts = () => {
-    const { data: session, status } = useSession()
     const router = useRouter()
     const ref = useRef()
     const { state, dispatch } = usePostContext()
@@ -33,7 +32,6 @@ const Posts = () => {
             fetchPosts,
             {
                 getNextPageParam: (_, pages) => pages.length < Math.ceil(number?.number / 10) ? pages.length + 1 : undefined,
-                // enabled: true,
             }
         )
 
@@ -62,7 +60,14 @@ const Posts = () => {
         return () => document.removeEventListener('scroll', onScroll)
     }, [isFetching, hasNextPage])
 
-    if (isError) return <div>Error! {JSON.stringify(error)}</div>
+    if (isError) {
+        refetch()
+        return (
+            <>
+                <div>Error! {JSON.stringify(error)}</div>
+            </>
+        )
+    }
 
     return (
         <div style={{ flex: 1 }}>

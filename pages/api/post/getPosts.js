@@ -1,9 +1,5 @@
 import dbConnect from '../../../lib/db'
-import nc from "next-connect";
-import multer from 'multer'
-import { getSession } from 'next-auth/react'
 import Post from '../../../models/postSchema';
-import path from 'path';
 
 const handler = async (req, res) => {
     if (req.method !== 'GET') {
