@@ -1,6 +1,4 @@
 import dbConnect from '../../../lib/db'
-import nc from "next-connect";
-import { getSession } from 'next-auth/react'
 import Post from '../../../models/postSchema';
 
 const handler = async (req, res) => {

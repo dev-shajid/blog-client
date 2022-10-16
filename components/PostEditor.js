@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import style from '../styles/CreatePost.module.css'
 import Editor from './Editor';
-import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/router';
 import { usePostContext } from '../store';
@@ -30,7 +29,7 @@ const PostEditor = ({ setActive }) => {
             let form = new FormData()
             form.append('title', title)
             form.append('description', description)
-            // form.append('tags', selectedTags)
+            form.append('tags', selectedTags)
             form.append('image', image)
 
             const toastId = toast.loading('Loading...')
@@ -41,7 +40,7 @@ const PostEditor = ({ setActive }) => {
                     body:form
                 })
                 const data = await res.json()
-                console.log(data);
+                
                 if (res.status == 200) {
                     dispatch({ type: 'UPDATE_TRUE' })
                     toast.dismiss(toastId)

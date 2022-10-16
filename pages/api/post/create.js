@@ -68,38 +68,34 @@ const handler = nc({
     .post(async (req, res) => {
         try {
             await dbConnect()
-            const session = await getSession({ req })
-            if (session) {
-                let { title, description, tags } = req.body
-                if (title && description) {
-                    const userId = session.user._id
 
-                    if (req.file) {
-                        if (req.file.size > 1024 * 1024 * 5) {
-                            res.status(400).json({ error: 'File size should be less then 5 MB', size: req.file.size / (1024 * 1024) })
-                        } else {
-                            // Upload image to cloudinary
-                            const result = await cloudinary.uploader.upload(req.file.path, {
-                                folder: 'dev-blog'
-                            });
+            let { title, description, tags } = req.body
+            if (title && description) {
+                const userId = session.user._id
 
-                            const imageUrl = result.url ? result.url : ''
-                            const post = await Post.create({ title, description, tags: tags || '', image: imageUrl, user: userId })
-
-                            if (post) {
-                                res.status(200).json({ message: post })
-                            } else {
-                                res.status(400).json({ error: 'Something is wrong' })
-                            }
-                        }
+                if (req.file) {
+                    if (req.file.size > 1024 * 1024 * 5) {
+                        res.status(400).json({ error: 'File size should be less then 5 MB', size: req.file.size / (1024 * 1024) })
                     } else {
-                        res.status(400).json({ error: "Select .png/.jpg/.webp image" })
+                        // Upload image to cloudinary
+                        const result = await cloudinary.uploader.upload(req.file.path, {
+                            folder: 'dev-blog'
+                        });
+
+                        const imageUrl = result.url ? result.url : ''
+                        const post = await Post.create({ title, description, tags: tags || '', image: imageUrl, user: userId })
+
+                        if (post) {
+                            res.status(200).json({ message: post })
+                        } else {
+                            res.status(400).json({ error: 'Something is wrong' })
+                        }
                     }
                 } else {
-                    res.status(400).json({ error: "Title and Description are required" })
+                    res.status(400).json({ error: "Select .png/.jpg/.webp image" })
                 }
             } else {
-                res.status(400).json({ error: 'Access Denied' })
+                res.status(400).json({ error: "Title and Description are required" })
             }
             // res.json({ body: req.body, file: req.file })
         } catch (err) {
