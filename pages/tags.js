@@ -4,10 +4,10 @@ import Transitions from '../components/Transitions'
 const tags = () => {
   return (
     <>
-        <Transitions>
-            <section>
-                <h1>Tags</h1>
-            </section>
+    <Transitions>
+        <section>
+            <h1>Tags</h1>
+        </section>
         </Transitions>
     </>
   )

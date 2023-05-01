@@ -107,11 +107,11 @@ const Nav = () => {
               transformOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-              <MenuItem onClick={()=>router.push('/profile')}>
+              <MenuItem onClick={() => router.push('/profile')}>
                 <Avatar /> Profile
               </MenuItem>
               <Divider />
-              <MenuItem onClick={()=>router.push('/post')}>
+              <MenuItem onClick={() => router.push('/post')}>
                 <ListItemIcon>
                   <PersonAdd fontSize="small" />
                 </ListItemIcon>
@@ -144,7 +144,7 @@ const Nav = () => {
                       (status == 'authenticated' && session?.user?.name) ?
                         <>
                           <IconSearch onClick={() => setActive(true)} style={{ color: 'black', cursor: 'pointer', marginRight: '1rem' }} />
-                          {!isMobile && <Link href='/post'><Button className={'create_post_button'} sx={{ textTransform: 'inherit', color:'black', borderColor:'black' }} variant='outlined'>Create Posts</Button></Link>}
+                          {!isMobile && <Link href='/post'><Button className={'create_post_button'} sx={{ textTransform: 'inherit', color: 'black', borderColor: 'black' }} variant='outlined'>Create Posts</Button></Link>}
                           <Tooltip title="Account settings">
                             <div className='profile'>
                               <IconButton
