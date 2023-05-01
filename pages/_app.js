@@ -15,29 +15,29 @@ function MyApp({ Component, pageProps, router }) {
   return <>
     <SessionProvider session={pageProps.session} refetchInterval={1000}>
       <ContextProvider>
-            <Layout>
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <Toaster
-              position="top-center"
-              reverseOrder={false}
-              gutter={12}
-            />
-            <NextNProgress
-              color="#7659ff"
-              startPosition={0.3}
-              stopDelayMs={200}
-              height={3}
-              spinner={false}
-              showOnShallow={false}
-            />
-            <Nav />
-            <AnimatePresence exitBeforeEnter >
-              <Component {...pageProps} />
-            </AnimatePresence>
-          </Hydrate>
-        </QueryClientProvider>
-            </Layout>
+        <Layout>
+          <QueryClientProvider client={queryClient}>
+            <Hydrate state={pageProps.dehydratedState}>
+              <Toaster
+                position="top-center"
+                reverseOrder={false}
+                gutter={12}
+              />
+              <NextNProgress
+                color="#7659ff"
+                startPosition={0.3}
+                stopDelayMs={200}
+                height={3}
+                spinner={false}
+                showOnShallow={false}
+              />
+              <Nav />
+              <AnimatePresence exitBeforeEnter >
+                <Component {...pageProps} />
+              </AnimatePresence>
+            </Hydrate>
+          </QueryClientProvider>
+        </Layout>
       </ContextProvider>
     </SessionProvider>
   </>
